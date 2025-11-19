@@ -1,5 +1,9 @@
 // ===== HOLBROOK ESTATES JAVASCRIPT ===== //
 
+// Global variables for carousel
+let currentSlide = 0;
+let slideInterval;
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===== MOBILE NAVIGATION ===== //
@@ -26,11 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
-            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.boxShadow = '0 4px 25px rgba(0, 0, 0, 0.12)';
+            navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.08)';
         } else {
-            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = 'none';
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+            navbar.style.borderBottom = '1px solid rgba(0, 0, 0, 0.05)';
         }
     });
 
@@ -77,24 +83,87 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // ===== GALLERY FUNCTIONALITY ===== //
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    // ===== HERO CAROUSEL FUNCTIONALITY ===== //
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
     
-    // Add click handlers for gallery items (placeholder for lightbox functionality)
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', function() {
-            // Placeholder for lightbox functionality
-            console.log(`Gallery item ${index + 1} clicked`);
-            // You can integrate a lightbox library here like Fancybox or create custom modal
+    function showSlide(index) {
+        // Remove active class from all slides and indicators
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+            const progress = indicator.querySelector('.indicator-progress');
+            if (progress) {
+                progress.style.animation = 'none';
+                progress.style.width = '0';
+            }
         });
         
-        // Add hover effects
-        item.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05)';
-        });
+        // Add active class to current slide and indicator
+        if (slides[index]) {
+            slides[index].classList.add('active');
+        }
+        if (indicators[index]) {
+            indicators[index].classList.add('active');
+            const progress = indicators[index].querySelector('.indicator-progress');
+            if (progress) {
+                setTimeout(() => {
+                    progress.style.animation = 'progressFill 8s linear';
+                    progress.style.width = '100%';
+                }, 100);
+            }
+        }
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+    
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+    
+    // Auto-advance slides
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 8000); // Change slide every 8 seconds
+    }
+    
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+    
+    // Start the slideshow
+    if (slides.length > 0) {
+        // Initialize first slide
+        showSlide(0);
+        startSlideshow();
         
-        item.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
+        // Pause on hover
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', stopSlideshow);
+            heroSection.addEventListener('mouseleave', startSlideshow);
+        }
+    }
+    
+    // ===== GALLERY SCROLL FUNCTIONALITY ===== //
+    const galleryTrack = document.querySelector('.gallery-track');
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    
+    // Add click handlers for gallery cards
+    galleryCards.forEach((card, index) => {
+        card.addEventListener('click', function() {
+            // Add a subtle click effect
+            this.style.transform = 'translateY(-8px) scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+            
+            console.log(`Gallery card ${index + 1} clicked`);
+            // You can add lightbox functionality here
         });
     });
 
@@ -249,18 +318,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // ===== PARALLAX EFFECT FOR HERO SECTION ===== //
     const heroSection = document.querySelector('.hero');
-    const heroMedia = document.querySelector('.hero-media');
+    const heroSlides = document.querySelectorAll('.hero-slide');
     
-    if (heroSection && heroMedia) {
+    if (heroSection && heroSlides.length > 0) {
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
-            const parallaxSpeed = 0.5;
+            const parallaxSpeed = 0.3;
             
             if (scrolled < heroSection.offsetHeight) {
-                heroMedia.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                heroSlides.forEach(slide => {
+                    slide.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                });
             }
         });
     }
+    
+    // ===== SCROLL ANIMATIONS FOR NEW SECTIONS ===== //
+    const attractionCards = document.querySelectorAll('.attraction-card');
+    const aboutImages = document.querySelectorAll('.about-img-large, .about-img-small');
+    
+    const attractionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 200);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    attractionCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        attractionObserver.observe(card);
+    });
+    
+    // Image hover effects
+    aboutImages.forEach(img => {
+        img.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        img.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
 
     // ===== ACTIVE NAVIGATION HIGHLIGHT ===== //
     const sections = document.querySelectorAll('section[id]');
@@ -312,9 +416,138 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===== CONSOLE WELCOME MESSAGE ===== //
-    console.log('%c🏡 Welcome to Holbrook Estates', 'color: #d4af37; font-size: 16px; font-weight: bold;');
-    console.log('%cA New Standard of Luxury Living', 'color: #2c2c2c; font-size: 12px;');
+    console.log('%c🏡 Welcome to Holbrook Estates', 'color: #c9a96e; font-size: 16px; font-weight: bold;');
+    console.log('%cPremier Residential Development in Flathead Valley', 'color: #2c2c2c; font-size: 12px;');
 });
+
+// ===== GLOBAL FUNCTIONS FOR CAROUSEL CONTROLS ===== //
+function changeSlide(direction) {
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    if (direction === 1) {
+        currentSlide = (currentSlide + 1) % slides.length;
+    } else {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    }
+    
+    // Remove active class from all
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => {
+        indicator.classList.remove('active');
+        const progress = indicator.querySelector('.indicator-progress');
+        if (progress) {
+            progress.style.animation = 'none';
+            progress.style.width = '0';
+        }
+    });
+    
+    // Add active class to current
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active');
+    
+    // Start progress animation
+    const activeProgress = indicators[currentSlide].querySelector('.indicator-progress');
+    if (activeProgress) {
+        setTimeout(() => {
+            activeProgress.style.animation = 'progressFill 8s linear';
+            activeProgress.style.width = '100%';
+        }, 100);
+    }
+}
+
+function currentSlideFunc(index) {
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    
+    currentSlide = index - 1;
+    
+    // Remove active class from all
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => {
+        indicator.classList.remove('active');
+        const progress = indicator.querySelector('.indicator-progress');
+        if (progress) {
+            progress.style.animation = 'none';
+            progress.style.width = '0';
+        }
+    });
+    
+    // Add active class to current
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active');
+    
+    // Start progress animation
+    const activeProgress = indicators[currentSlide].querySelector('.indicator-progress');
+    if (activeProgress) {
+        setTimeout(() => {
+            activeProgress.style.animation = 'progressFill 8s linear';
+            activeProgress.style.width = '100%';
+        }, 100);
+    }
+}
+
+// ===== GLOBAL FUNCTIONS FOR GALLERY SCROLL ===== //
+function scrollGallery(direction) {
+    const galleryTrack = document.querySelector('.gallery-track');
+    if (!galleryTrack) return;
+    
+    const cardWidth = 350; // Card width + gap
+    const scrollAmount = cardWidth + 32; // Include gap
+    
+    if (direction === 1) {
+        galleryTrack.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    } else {
+        galleryTrack.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    }
+}
+
+// ===== IMAGE MODAL FUNCTIONALITY ===== //
+function openImageModal(imageSrc, title, description) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    
+    modal.style.display = 'block';
+    modalImage.src = imageSrc;
+    modalImage.alt = title;
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+}
+
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    
+    // Restore body scrolling
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside the image
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+        closeImageModal();
+    }
+});
+
+// Close modal with Escape key
+window.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeImageModal();
+    }
+});
+
+// Make functions available globally
+window.changeSlide = changeSlide;
+window.currentSlide = currentSlideFunc;
+window.scrollGallery = scrollGallery;
+window.openImageModal = openImageModal;
+window.closeImageModal = closeImageModal;
 
 // ===== CSS ANIMATIONS FOR NOTIFICATIONS ===== //
 const style = document.createElement('style');
@@ -331,7 +564,7 @@ style.textContent = `
     }
     
     .nav-link.active {
-        color: var(--accent-color, #d4af37) !important;
+        color: var(--accent-color, #c9a96e) !important;
     }
     
     .nav-link.active::after {
@@ -343,9 +576,171 @@ style.textContent = `
     }
     
     .scroll-to-top:hover {
-        background-color: var(--gold-light, #e8c547) !important;
+        background-color: var(--accent-light, #e4d4b7) !important;
         transform: translateY(-2px);
+    }
+    
+    .gallery-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .gallery-item.filtered-out {
+        opacity: 0;
+        transform: scale(0.8);
     }
 `;
 
 document.head.appendChild(style);
+
+// ===== LIGHTBOX FUNCTIONALITY ===== //
+let currentImageIndex = 0;
+let galleryImages = [];
+
+// Initialize lightbox functionality
+function initializeLightbox() {
+    // Get all gallery images and their data
+    const galleryCards = document.querySelectorAll('.gallery-card');
+    galleryImages = Array.from(galleryCards).map(card => {
+        const img = card.querySelector('.gallery-img');
+        const info = card.querySelector('.gallery-info');
+        const title = info.querySelector('h4').textContent;
+        const description = info.querySelector('p').textContent;
+        
+        return {
+            src: img.src,
+            alt: img.alt,
+            title: title,
+            description: description
+        };
+    });
+    
+    // Add click event listeners to gallery images
+    galleryCards.forEach((card, index) => {
+        const img = card.querySelector('.gallery-img');
+        img.addEventListener('click', () => openLightbox(index));
+        
+        // Add keyboard accessibility
+        img.setAttribute('tabindex', '0');
+        img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox(index);
+            }
+        });
+    });
+}
+
+// Open lightbox with specific image
+function openLightbox(index) {
+    currentImageIndex = index;
+    const modal = document.getElementById('lightbox-modal');
+    const image = document.getElementById('lightbox-image');
+    const title = document.getElementById('lightbox-title');
+    const description = document.getElementById('lightbox-description');
+    
+    const imageData = galleryImages[currentImageIndex];
+    
+    // Set image and info
+    image.src = imageData.src;
+    image.alt = imageData.alt;
+    title.textContent = imageData.title;
+    description.textContent = imageData.description;
+    
+    // Show modal with animation
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
+    
+    // Update navigation buttons
+    updateNavigationButtons();
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+// Close lightbox
+function closeLightbox() {
+    const modal = document.getElementById('lightbox-modal');
+    
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Navigate to previous image
+function previousImage() {
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+        updateLightboxImage();
+    }
+}
+
+// Navigate to next image
+function nextImage() {
+    if (currentImageIndex < galleryImages.length - 1) {
+        currentImageIndex++;
+        updateLightboxImage();
+    }
+}
+
+// Update lightbox image and info
+function updateLightboxImage() {
+    const image = document.getElementById('lightbox-image');
+    const title = document.getElementById('lightbox-title');
+    const description = document.getElementById('lightbox-description');
+    
+    const imageData = galleryImages[currentImageIndex];
+    
+    // Fade out
+    image.style.opacity = '0';
+    
+    setTimeout(() => {
+        image.src = imageData.src;
+        image.alt = imageData.alt;
+        title.textContent = imageData.title;
+        description.textContent = imageData.description;
+        
+        // Fade in
+        image.style.opacity = '1';
+    }, 150);
+    
+    updateNavigationButtons();
+}
+
+// Update navigation button states
+function updateNavigationButtons() {
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+    
+    prevBtn.disabled = currentImageIndex === 0;
+    nextBtn.disabled = currentImageIndex === galleryImages.length - 1;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal.classList.contains('active')) {
+        switch(e.key) {
+            case 'Escape':
+                closeLightbox();
+                break;
+            case 'ArrowLeft':
+                previousImage();
+                break;
+            case 'ArrowRight':
+                nextImage();
+                break;
+        }
+    }
+});
+
+// Initialize lightbox when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Wait a bit for images to load
+    setTimeout(initializeLightbox, 500);
+});

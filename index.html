@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -44,18 +44,79 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
-            <div class="hero-media" style="background-image: url('assets/PTSC_0064.JPG');"></div>
+        <div class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('assets/PTSC_0064.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('assets/SING0018.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('assets/SING0025.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('assets/IMG_4345.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
         </div>
         <div class="hero-content">
             <div class="hero-text">
-                <h1 class="hero-title">Holbrook Estates</h1>
-                <p class="hero-subtitle">Premier Residential Development in Flathead Valley</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Request Info</a>
-                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                <div class="hero-badge">
+                    <span class="badge-text">Est. 2024</span>
+                    <div class="badge-line"></div>
+                    <span class="badge-text">Flathead Valley</span>
                 </div>
+                <h1 class="hero-title">
+                    <span class="title-main">Holbrook</span>
+                    <span class="title-accent">Estates</span>
+                </h1>
+                <p class="hero-subtitle">Premier Residential Development in Flathead Valley</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">35</span>
+                        <span class="stat-label">Exclusive Lots</span>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1-2</span>
+                        <span class="stat-label">Acre Lots</span>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">30</span>
+                        <span class="stat-label">Lots Remaining</span>
+                        <div class="stat-line"></div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Request Information</span>
+                        <div class="btn-arrow">→</div>
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <span>Discover More</span>
+                        <div class="btn-underline"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-navigation">
+            <button class="hero-nav-btn prev" onclick="changeSlide(-1)">‹</button>
+            <button class="hero-nav-btn next" onclick="changeSlide(1)">›</button>
+        </div>
+        <div class="hero-indicators">
+            <div class="indicators-container">
+                <span class="indicator active" onclick="currentSlide(1)">
+                    <div class="indicator-progress"></div>
+                </span>
+                <span class="indicator" onclick="currentSlide(2)">
+                    <div class="indicator-progress"></div>
+                </span>
+                <span class="indicator" onclick="currentSlide(3)">
+                    <div class="indicator-progress"></div>
+                </span>
+                <span class="indicator" onclick="currentSlide(4)">
+                    <div class="indicator-progress"></div>
+                </span>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -82,8 +143,56 @@
                     </p>
                     <a href="#features" class="btn btn-outline">Discover More</a>
                 </div>
-                <div class="about-image">
-                    <img src="assets/PTSC_0064.JPG" alt="Holbrook Estates Premium Amenities" class="about-img">
+                <div class="about-images">
+                    <div class="about-image-main">
+                        <img src="assets/SING0020.JPG" alt="Holbrook Estates Scenic Views" class="about-img-large">
+                    </div>
+                    <div class="about-image-grid">
+                        <img src="assets/IMG_3485.jpg" alt="Mountain Views" class="about-img-small">
+                        <img src="assets/SING0024.JPG" alt="Natural Beauty" class="about-img-small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Showcase -->
+    <section class="attractions-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">World-Class Attractions</h2>
+                <p class="section-subtitle">Minutes from Montana's premier destinations</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/20140118_SKI_057.jpg" alt="Whitefish Mountain Resort" class="attraction-img">
+                    </div>
+                    <div class="attraction-content">
+                        <h3>Whitefish Mountain Resort</h3>
+                        <span class="distance">30 minutes away</span>
+                        <p>Over 3,000 skiable acres making it one of the largest ski resorts in the U.S. and Canada. State-of-the-art grooming, snowmaking, lifts, skiing, snowboarding, snowshoeing, and guided snowmobile rentals.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/SING0031.JPG" alt="Glacier National Park" class="attraction-img">
+                    </div>
+                    <div class="attraction-content">
+                        <h3>Glacier National Park</h3>
+                        <span class="distance">45 minutes away</span>
+                        <p>More than 1 million acres including parts of two mountain ranges, over 130 named lakes, 1,000+ species of plants, and hundreds of animal species. The centerpiece of the "Crown of the Continent Ecosystem".</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/IMG_1290.jpg" alt="Flathead Lake" class="attraction-img">
+                    </div>
+                    <div class="attraction-content">
+                        <h3>Flathead Lake</h3>
+                        <span class="distance">30 minutes south</span>
+                        <p>30 miles long and 16 miles wide, covering 197 square miles with a maximum depth of 370.7 ft. Located in a scenic part of Montana, flanked by two scenic highways.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,31 +240,69 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
+    <!-- Location Section -->
+    <section id="location" class="location">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Experience Luxury</h2>
-                <p class="section-subtitle">A glimpse into exceptional living</p>
+            <div class="location-content">
+                <div class="location-text">
+                    <h2 class="section-title">Prime Location</h2>
+                    <p class="section-subtitle">Perfectly positioned for luxury living</p>
+                    <div class="location-highlights">
+                        <div class="location-item">
+                            <h4>Glacier National Park</h4>
+                            <p><strong>45 minutes away</strong> - A national park encompassing more than 1 million acres and includes parts of two mountain ranges, more than 130 named lakes, more than 1,000 different species of plants, and hundreds of species of animals. This vast, pristine ecosystem is the centerpiece of the "Crown of the Continent Ecosystem".</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Flathead Lake</h4>
+                            <p><strong>30 minutes south</strong> - Located 7 miles south of Kalispell, Flathead Lake is approximately 30 miles long and 16 miles wide, covering 197 square miles. It has a maximum depth of 370.7 ft and lies in a scenic part of Montana, flanked by two scenic highways.</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Whitefish Mountain Resort</h4>
+                            <p><strong>30 minutes away</strong> - Located 35 miles west of Glacier National Park with over 3,000 skiable acres, making it one of the largest ski resorts in the U.S. and Canada. Offers state-of-the-art grooming, snowmaking, lifts, skiing, snowboarding, snowshoeing, and guided snowmobile rentals.</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Convenient Access</h4>
+                            <p>15 minutes to shopping • 20 minutes to Glacier International Airport • Close to excellent schools with multiple options to choose from</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <img src="assets/561592654.jpeg" alt="Holbrook Estates Location" class="location-img">
+                </div>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-category="exterior">
-                    <img src="assets/PTSC_0052.JPG" alt="Holbrook Estates Exterior" class="gallery-img">
+            
+            <!-- Development Map & Photos - Modern Compact Design -->
+            <div class="map-photos-section">
+                <div class="section-header">
+                    <h3 class="section-subtitle-large">Development Overview</h3>
+                    <p class="section-description">Official plot map and site imagery</p>
                 </div>
-                <div class="gallery-item" data-category="interior">
-                    <img src="assets/IMG_0216.jpg" alt="Luxury Interior" class="gallery-img">
-                </div>
-                <div class="gallery-item" data-category="interior">
-                    <img src="assets/IMG_0217.jpg" alt="Elegant Living Space" class="gallery-img">
-                </div>
-                <div class="gallery-item" data-category="exterior">
-                    <img src="assets/PTSC_0059+(1).JPG" alt="Property Grounds" class="gallery-img">
-                </div>
-                <div class="gallery-item" data-category="interior">
-                    <img src="assets/IMG_0216.jpg" alt="Luxury Interior Design" class="gallery-img">
-                </div>
-                <div class="gallery-item" data-category="exterior">
-                    <img src="assets/Plot+Map+Sign.jpg" alt="Property Signage" class="gallery-img">
+                
+                <!-- Modern Compact Layout -->
+                <div class="modern-map-container">
+                    <!-- Featured Plot Map -->
+                    <div class="featured-map" onclick="openImageModal('assets/Plot Map Sign.jpg', 'Official Plot Map', 'Detailed lot layout with numbers and dimensions')">
+                        <img src="assets/Plot Map Sign.jpg" alt="Holbrook Estates Official Plot Map" class="featured-map-img">
+                        <div class="map-badge">
+                            <span class="badge-text">Official Plot Map</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Compact Photo Gallery -->
+                    <div class="compact-gallery">
+                        <div class="gallery-item" onclick="openImageModal('assets/SING0002.JPG', 'Mountain Views', 'Stunning natural scenery surrounding Holbrook Estates')">
+                            <img src="assets/SING0002.JPG" alt="Mountain Views" class="gallery-img">
+                            <span class="gallery-label">Mountain Views</span>
+                        </div>
+                        <div class="gallery-item" onclick="openImageModal('assets/SING0011 (1).JPG', 'Site Development', 'Roads and infrastructure development progress')">
+                            <img src="assets/SING0011 (1).JPG" alt="Site Development" class="gallery-img">
+                            <span class="gallery-label">Infrastructure</span>
+                        </div>
+                        <div class="gallery-item" onclick="openImageModal('assets/SING0012.JPG', 'Natural Setting', 'Beautiful landscape views of the development area')">
+                            <img src="assets/SING0012.JPG" alt="Natural Setting" class="gallery-img">
+                            <span class="gallery-label">Natural Setting</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -219,115 +366,239 @@
         </div>
     </section>
 
-    <!-- Location Section -->
-    <section id="location" class="location">
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
         <div class="container">
-            <div class="location-content">
-                <div class="location-text">
-                    <h2 class="section-title">Prime Location</h2>
-                    <p class="section-subtitle">Perfectly positioned for luxury living</p>
-                    <div class="location-highlights">
-                        <div class="location-item">
-                            <h4>Glacier National Park</h4>
-                            <p><strong>45 minutes away</strong> - A national park encompassing more than 1 million acres and includes parts of two mountain ranges, more than 130 named lakes, more than 1,000 different species of plants, and hundreds of species of animals. This vast, pristine ecosystem is the centerpiece of the "Crown of the Continent Ecosystem".</p>
+            <div class="section-header">
+                <h2 class="section-title">Experience Luxury</h2>
+                <p class="section-subtitle">A glimpse into exceptional living</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <div class="gallery-card">
+                        <img src="assets/SING0018.JPG" alt="Mountain Landscape" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Mountain Views</h4>
+                            <p>Breathtaking natural scenery</p>
                         </div>
-                        <div class="location-item">
-                            <h4>Flathead Lake</h4>
-                            <p><strong>30 minutes south</strong> - Located 7 miles south of Kalispell, Flathead Lake is approximately 30 miles long and 16 miles wide, covering 197 square miles. It has a maximum depth of 370.7 ft and lies in a scenic part of Montana, flanked by two scenic highways.</p>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/PTSC_0052.JPG" alt="Custom Home" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Custom Homes</h4>
+                            <p>Luxury living spaces</p>
                         </div>
-                        <div class="location-item">
-                            <h4>Whitefish Mountain Resort</h4>
-                            <p><strong>30 minutes away</strong> - Located 35 miles west of Glacier National Park with over 3,000 skiable acres, making it one of the largest ski resorts in the U.S. and Canada. Offers state-of-the-art grooming, snowmaking, lifts, skiing, snowboarding, snowshoeing, and guided snowmobile rentals.</p>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/IMG_0216.jpg" alt="Interior Design" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Elegant Interiors</h4>
+                            <p>Premium finishes</p>
                         </div>
-                        <div class="location-item">
-                            <h4>Convenient Access</h4>
-                            <p>15 minutes to shopping • 20 minutes to Glacier International Airport • Close to excellent schools with multiple options to choose from</p>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/SING0025.JPG" alt="Natural Setting" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Park-like Setting</h4>
+                            <p>Pristine environment</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/IMG_0217.jpg" alt="Living Space" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Open Floor Plans</h4>
+                            <p>Modern living design</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/SING0024.JPG" alt="Scenic Views" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Scenic Beauty</h4>
+                            <p>Year-round views</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/IMG_4345.JPG" alt="Natural Landscape" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Natural Beauty</h4>
+                            <p>Untouched wilderness</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/20140118_SKI_057.jpg" alt="Skiing" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Winter Sports</h4>
+                            <p>World-class skiing nearby</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/PTSC_0059+(1).JPG" alt="Property Grounds" class="gallery-img">
+                        <div class="gallery-info">
+                            <h4>Spacious Lots</h4>
+                            <p>1-2 acre homesites</p>
                         </div>
                     </div>
                 </div>
-                <div class="location-map">
-                    <img src="assets/561592654.jpeg" alt="Holbrook Estates Location" class="location-img">
+                
+                <button class="gallery-btn gallery-btn-prev" onclick="scrollGallery(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="gallery-btn gallery-btn-next" onclick="scrollGallery(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Modern Design -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <!-- Hero Header -->
+            <div class="contact-hero">
+                <h2 class="section-title">Ready to Build Your Dream?</h2>
+                <p class="section-subtitle">Let's start the conversation about your future home at Holbrook Estates</p>
+            </div>
+            
+            <!-- Modern 3-Column Layout -->
+            <div class="contact-modern-grid">
+                <!-- Contact Form - Featured -->
+                <div class="contact-form-modern">
+                    <div class="form-header">
+                        <h3>Get In Touch</h3>
+                        <p>Send us a message and we'll respond within 24 hours</p>
+                    </div>
+                    <form id="inquiryForm" class="modern-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In</label>
+                            <select id="interest" name="interest" required>
+                                <option value="">Select an option</option>
+                                <option value="lot-purchase">Purchasing a Lot</option>
+                                <option value="custom-build">Custom Home Build</option>
+                                <option value="hoa-info">HOA Information</option>
+                                <option value="site-visit">Schedule Site Visit</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your dream home..."></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Keep me updated on new lots and community news</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-modern">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Primary Agent - Sandy -->
+                <div class="agent-featured">
+                    <div class="agent-header">
+                        <h3>Your Primary Contact</h3>
+                        <p>Expert guidance for your Holbrook Estates journey</p>
+                    </div>
+                    <div class="agent-card-modern primary-agent">
+                        <div class="agent-photo-modern">
+                            <img src="assets/sandyheadshot.png" alt="Sandy O'Connell" class="agent-img-modern">
+                            <div class="agent-badge">Primary Contact</div>
+                        </div>
+                        <div class="agent-details">
+                            <h4>Sandy O'Connell</h4>
+                            <p class="agent-title">Senior Real Estate Advisor</p>
+                            <p class="agent-company">PureWest Real Estate | Christie's International</p>
+                            
+                            <div class="contact-methods">
+                                <a href="tel:4062707541" class="contact-method">
+                                    <span class="contact-icon">📞</span>
+                                    <div>
+                                        <strong>Call Direct</strong>
+                                        <p>406.270.7541</p>
+                                    </div>
+                                </a>
+                                <a href="mailto:Sandy@PureWestMT.com" class="contact-method">
+                                    <span class="contact-icon">📧</span>
+                                    <div>
+                                        <strong>Email</strong>
+                                        <p>Sandy@PureWestMT.com</p>
+                                    </div>
+                                </a>
+                                <a href="https://PureWestRealEstate.com" target="_blank" class="contact-method">
+                                    <span class="contact-icon">🌐</span>
+                                    <div>
+                                        <strong>Website</strong>
+                                        <p>PureWestRealEstate.com</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Info & Secondary Agent -->
+                <div class="contact-additional">
+                    <div class="info-card">
+                        <h4>📋 HOA Information</h4>
+                        <p>Request a copy of our HOA Codes, Covenants and Restrictions to learn about community guidelines and fees.</p>
+                        <button class="btn btn-outline btn-small" onclick="document.getElementById('interest').value='hoa-info'; document.getElementById('message').value='Please send me the HOA Codes, Covenants and Restrictions.';">Request HOA Docs</button>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🏗️ Custom Building</h4>
+                        <p>From conceptualizing to constructing, we're ready to design your architectural dream with quality craftsmanship.</p>
+                    </div>
+                    
+                    <!-- Secondary Agent -->
+                    <div class="agent-secondary">
+                        <h4>Additional Support</h4>
+                        <div class="agent-card-compact">
+                            <img src="assets/advisorphoto-BruyerKristi-s-web-large.jpg" alt="Kristi Bruyer" class="agent-img-small">
+                            <div class="agent-info-compact">
+                                <h5>Kristi Bruyer</h5>
+                                <p>Engel & Völkers Western Frontier</p>
+                                <a href="tel:4062507288">📞 (406) 250-7288</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2 class="section-title">Let's Build!</h2>
-                    <p class="section-subtitle">Please contact us to receive a copy of our HOA Codes, Covenants and Restrictions</p>
-                    <div class="contact-description">
-                        <p>From conceptualizing to constructing, we're ready to design your architectural dream. We promise a client-centric approach that empowers ideas, eases concerns, and delivers quality craftsmanship we'll all be proud of.</p>
-                    </div>
-                    
-                    <div class="real-estate-agents">
-                        <h3>Your Real Estate Professionals</h3>
-                        <div class="agents-grid">
-                            <div class="agent-card">
-                                <div class="agent-photo">
-                                    <img src="assets/advisorphoto-BruyerKristi-s-web-large.jpg" alt="Kristi Bruyer" class="agent-img">
-                                </div>
-                                <div class="agent-info">
-                                    <h4>Kristi Bruyer</h4>
-                                    <p class="agent-company">Engel & Völkers Western Frontier</p>
-                                    <div class="agent-contact">
-                                        <p>📍 214 2nd St. East, Suite 101<br>Whitefish, MT 59937</p>
-                                        <p>📧 kristi.bruyer@evusa.com</p>
-                                        <p>📞 (406) 250-7288</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="agent-card">
-                                <div class="agent-photo">
-                                    <img src="assets/sandyheadshot.png" alt="Sandy O'Connell" class="agent-img">
-                                </div>
-                                <div class="agent-info">
-                                    <h4>Sandy O'Connell</h4>
-                                    <p class="agent-company">PureWest Real Estate | Christie's International</p>
-                                    <div class="agent-contact">
-                                        <p>📍 115 Bills Rd | Lakeside</p>
-                                        <p>📧 Sandy@PureWestMT.com</p>
-                                        <p>📞 406.270.7541 | 406.844.6050</p>
-                                        <p>🌐 PureWestRealEstate.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="inquiryForm" class="inquiry-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group checkbox-group">
-                            <input type="checkbox" id="newsletter" name="newsletter">
-                            <label for="newsletter">Sign up for news and updates</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Submit</button>
-                    </form>
-                </div>
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" class="image-modal-img" src="" alt="">
+            <div id="modalCaption" class="image-modal-caption">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -373,10 +644,27 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Holbrook Estates. All rights reserved.</p>
+                <p>&copy; 2025 Holbrook Estates. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Image Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-image" src="" alt="" class="lightbox-img">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+            <div class="lightbox-navigation">
+                <button class="lightbox-nav lightbox-prev" onclick="previousImage()">&lt;</button>
+                <button class="lightbox-nav lightbox-next" onclick="nextImage()">&gt;</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/script.js"></script>
