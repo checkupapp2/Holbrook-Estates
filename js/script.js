@@ -603,12 +603,14 @@ function initializeLightbox() {
     galleryImages = Array.from(galleryCards).map(card => {
         const img = card.querySelector('.gallery-img');
         const info = card.querySelector('.gallery-info');
-        const title = info.querySelector('h4').textContent;
-        const description = info.querySelector('p').textContent;
+        
+        // Add error handling for missing elements
+        const title = info && info.querySelector('h4') ? info.querySelector('h4').textContent : 'Image';
+        const description = info && info.querySelector('p') ? info.querySelector('p').textContent : '';
         
         return {
             src: img.src,
-            alt: img.alt,
+            alt: img.alt || title,
             title: title,
             description: description
         };
@@ -814,6 +816,29 @@ function preloadImages() {
             initializeSplashScreen();
         }
     }, 2000);
+}
+
+// ===== COMPATIBILITY FUNCTION FOR EXISTING HTML ===== //
+// This function is referenced in the HTML for some images
+function openImageModal(imageSrc, title, description) {
+    // Find the image index in our gallery
+    const imageIndex = galleryImages.findIndex(img => img.src.includes(imageSrc));
+    
+    if (imageIndex !== -1) {
+        openLightbox(imageIndex);
+    } else {
+        // If not found in gallery, create a temporary lightbox entry
+        const tempImage = {
+            src: imageSrc,
+            alt: title,
+            title: title,
+            description: description
+        };
+        
+        // Add to gallery temporarily
+        galleryImages.push(tempImage);
+        openLightbox(galleryImages.length - 1);
+    }
 }
 
 // Initialize everything when DOM is loaded
