@@ -737,11 +737,28 @@ function initializePlotMapLightbox() {
     });
 }
 
+// Initialize clickable images lightbox
+function initializeClickableImages() {
+    const clickableImages = document.querySelectorAll('.clickable-img');
+    
+    clickableImages.forEach(img => {
+        img.addEventListener('click', () => {
+            const title = img.dataset.title || img.alt;
+            const description = img.dataset.description || '';
+            
+            openLightbox(img.src, title, description);
+        });
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Start preloading and splash sequence
     preloadImages();
     
-    // Initialize plot map lightbox after a short delay
-    setTimeout(initializePlotMapLightbox, 1000);
+    // Initialize lightbox functionality after a short delay
+    setTimeout(() => {
+        initializePlotMapLightbox();
+        initializeClickableImages();
+    }, 1000);
 });
