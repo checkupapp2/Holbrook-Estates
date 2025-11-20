@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=2025.11.19.4">
+    <link rel="stylesheet" href="css/styles.css?v=2025.11.19.12">
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
@@ -292,39 +292,41 @@
                     <img src="assets/561592654.jpeg" alt="Holbrook Estates Location" class="location-img">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Plot Map Overview Section -->
+    <section id="plot-map" class="plot-map-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Plot Map Overview</h2>
+                <p class="section-subtitle">Tap any image to view full size</p>
+            </div>
             
-            <!-- Development Map & Photos - Modern Compact Design -->
-            <div class="map-photos-section">
-                <div class="section-header">
-                    <h3 class="section-subtitle-large">Development Overview</h3>
-                    <p class="section-description">Official plot map and site imagery</p>
+            <div class="plot-map-scroll">
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Official Plot Map" data-description="Detailed lot layout with numbers and dimensions">
+                    <img src="assets/Plot%2BMap%2BSign.jpg" alt="Official Plot Map" class="plot-img">
+                    <span class="plot-label">Official Plot Map</span>
                 </div>
                 
-                <!-- Modern Compact Layout -->
-                <div class="modern-map-container">
-                    <!-- Featured Plot Map -->
-                    <div class="featured-map" onclick="openImageModal('assets/Plot Map Sign.jpg', 'Official Plot Map', 'Detailed lot layout with numbers and dimensions')">
-                        <img src="assets/Plot%20Map%20Sign.jpg" alt="Holbrook Estates Official Plot Map" class="featured-map-img">
-                        <div class="map-badge">
-                            <span class="badge-text">Official Plot Map</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Compact Photo Gallery -->
-                    <div class="compact-gallery">
-                        <div class="gallery-item" onclick="openImageModal('assets/SING0002.JPG', 'Mountain Views', 'Stunning natural scenery surrounding Holbrook Estates')">
-                            <img src="assets/SING0002.JPG" alt="Mountain Views" class="gallery-img">
-                            <span class="gallery-label">Mountain Views</span>
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('assets/SING0011 (1).JPG', 'Site Development', 'Roads and infrastructure development progress')">
-                            <img src="assets/SING0011%20(1).JPG" alt="Site Development" class="gallery-img">
-                            <span class="gallery-label">Infrastructure</span>
-                        </div>
-                        <div class="gallery-item" onclick="openImageModal('assets/SING0012.JPG', 'Natural Setting', 'Beautiful landscape views of the development area')">
-                            <img src="assets/SING0012.JPG" alt="Natural Setting" class="gallery-img">
-                            <span class="gallery-label">Natural Setting</span>
-                        </div>
-                    </div>
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Development Overview" data-description="Aerial view of the development area">
+                    <img src="assets/SING0004.JPG" alt="Development Overview" class="plot-img">
+                    <span class="plot-label">Development Overview</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Site Layout" data-description="Comprehensive site development view">
+                    <img src="assets/SING0006.JPG" alt="Site Layout" class="plot-img">
+                    <span class="plot-label">Site Layout</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Property Boundaries" data-description="Clear view of lot boundaries and roads">
+                    <img src="assets/SING0008.JPG" alt="Property Boundaries" class="plot-img">
+                    <span class="plot-label">Property Boundaries</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Natural Setting" data-description="Beautiful landscape views of the development area">
+                    <img src="assets/SING0012.JPG" alt="Natural Setting" class="plot-img">
+                    <span class="plot-label">Natural Setting</span>
                 </div>
             </div>
         </div>
@@ -671,26 +673,22 @@
         </div>
     </footer>
 
-    <!-- Image Lightbox Modal -->
-    <div id="lightbox-modal" class="lightbox-modal">
-        <div class="lightbox-overlay" onclick="closeLightbox()"></div>
+
+    </div> <!-- End Main Content -->
+
+    <!-- Simple Lightbox Modal -->
+    <div id="simple-lightbox" class="simple-lightbox">
         <div class="lightbox-content">
             <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <img id="lightbox-image" src="" alt="" class="lightbox-img">
+            <img id="lightbox-image" src="" alt="" class="lightbox-image">
             <div class="lightbox-info">
-                <h3 id="lightbox-title"></h3>
-                <p id="lightbox-description"></p>
-            </div>
-            <div class="lightbox-navigation">
-                <button class="lightbox-nav lightbox-prev" onclick="previousImage()">&lt;</button>
-                <button class="lightbox-nav lightbox-next" onclick="nextImage()">&gt;</button>
+                <h3 id="lightbox-title" class="lightbox-title"></h3>
+                <p id="lightbox-description" class="lightbox-description"></p>
             </div>
         </div>
     </div>
 
-    </div> <!-- End Main Content -->
-
     <!-- Scripts -->
-    <script src="js/script.js?v=2025.11.19.4"></script>
+    <script src="js/script.js?v=2025.11.19.12"></script>
 </body>
 </html>

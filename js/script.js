@@ -592,155 +592,6 @@ style.textContent = `
 
 document.head.appendChild(style);
 
-// ===== LIGHTBOX FUNCTIONALITY ===== //
-let currentImageIndex = 0;
-let galleryImages = [];
-
-// Initialize lightbox functionality
-function initializeLightbox() {
-    // Get all gallery images and their data
-    const galleryCards = document.querySelectorAll('.gallery-card');
-    galleryImages = Array.from(galleryCards).map(card => {
-        const img = card.querySelector('.gallery-img');
-        const info = card.querySelector('.gallery-info');
-        
-        // Add error handling for missing elements
-        const title = info && info.querySelector('h4') ? info.querySelector('h4').textContent : 'Image';
-        const description = info && info.querySelector('p') ? info.querySelector('p').textContent : '';
-        
-        return {
-            src: img.src,
-            alt: img.alt || title,
-            title: title,
-            description: description
-        };
-    });
-    
-    // Add click event listeners to gallery images
-    galleryCards.forEach((card, index) => {
-        const img = card.querySelector('.gallery-img');
-        img.addEventListener('click', () => openLightbox(index));
-        
-        // Add keyboard accessibility
-        img.setAttribute('tabindex', '0');
-        img.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openLightbox(index);
-            }
-        });
-    });
-}
-
-// Open lightbox with specific image
-function openLightbox(index) {
-    currentImageIndex = index;
-    const modal = document.getElementById('lightbox-modal');
-    const image = document.getElementById('lightbox-image');
-    const title = document.getElementById('lightbox-title');
-    const description = document.getElementById('lightbox-description');
-    
-    const imageData = galleryImages[currentImageIndex];
-    
-    // Set image and info
-    image.src = imageData.src;
-    image.alt = imageData.alt;
-    title.textContent = imageData.title;
-    description.textContent = imageData.description;
-    
-    // Show modal with animation
-    modal.style.display = 'flex';
-    setTimeout(() => {
-        modal.classList.add('active');
-    }, 10);
-    
-    // Update navigation buttons
-    updateNavigationButtons();
-    
-    // Prevent body scroll
-    document.body.style.overflow = 'hidden';
-}
-
-// Close lightbox
-function closeLightbox() {
-    const modal = document.getElementById('lightbox-modal');
-    
-    modal.classList.remove('active');
-    setTimeout(() => {
-        modal.style.display = 'none';
-    }, 300);
-    
-    // Restore body scroll
-    document.body.style.overflow = '';
-}
-
-// Navigate to previous image
-function previousImage() {
-    if (currentImageIndex > 0) {
-        currentImageIndex--;
-        updateLightboxImage();
-    }
-}
-
-// Navigate to next image
-function nextImage() {
-    if (currentImageIndex < galleryImages.length - 1) {
-        currentImageIndex++;
-        updateLightboxImage();
-    }
-}
-
-// Update lightbox image and info
-function updateLightboxImage() {
-    const image = document.getElementById('lightbox-image');
-    const title = document.getElementById('lightbox-title');
-    const description = document.getElementById('lightbox-description');
-    
-    const imageData = galleryImages[currentImageIndex];
-    
-    // Fade out
-    image.style.opacity = '0';
-    
-    setTimeout(() => {
-        image.src = imageData.src;
-        image.alt = imageData.alt;
-        title.textContent = imageData.title;
-        description.textContent = imageData.description;
-        
-        // Fade in
-        image.style.opacity = '1';
-    }, 150);
-    
-    updateNavigationButtons();
-}
-
-// Update navigation button states
-function updateNavigationButtons() {
-    const prevBtn = document.querySelector('.lightbox-prev');
-    const nextBtn = document.querySelector('.lightbox-next');
-    
-    prevBtn.disabled = currentImageIndex === 0;
-    nextBtn.disabled = currentImageIndex === galleryImages.length - 1;
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('lightbox-modal');
-    if (modal.classList.contains('active')) {
-        switch(e.key) {
-            case 'Escape':
-                closeLightbox();
-                break;
-            case 'ArrowLeft':
-                previousImage();
-                break;
-            case 'ArrowRight':
-                nextImage();
-                break;
-        }
-    }
-});
-
 // ===== SPLASH SCREEN FUNCTIONALITY ===== //
 function initializeSplashScreen() {
     const splashScreen = document.getElementById('splash-screen');
@@ -818,27 +669,72 @@ function preloadImages() {
     }, 2000);
 }
 
-// ===== COMPATIBILITY FUNCTION FOR EXISTING HTML ===== //
-// This function is referenced in the HTML for some images
-function openImageModal(imageSrc, title, description) {
-    // Find the image index in our gallery
-    const imageIndex = galleryImages.findIndex(img => img.src.includes(imageSrc));
+// ===== SIMPLE LIGHTBOX FUNCTIONALITY ===== //
+function openLightbox(imageSrc, title, description) {
+    const lightbox = document.getElementById('simple-lightbox');
+    const image = document.getElementById('lightbox-image');
+    const titleEl = document.getElementById('lightbox-title');
+    const descriptionEl = document.getElementById('lightbox-description');
     
-    if (imageIndex !== -1) {
-        openLightbox(imageIndex);
-    } else {
-        // If not found in gallery, create a temporary lightbox entry
-        const tempImage = {
-            src: imageSrc,
-            alt: title,
-            title: title,
-            description: description
-        };
-        
-        // Add to gallery temporarily
-        galleryImages.push(tempImage);
-        openLightbox(galleryImages.length - 1);
+    // Set image and info
+    image.src = imageSrc;
+    image.alt = title;
+    titleEl.textContent = title;
+    descriptionEl.textContent = description;
+    
+    // Show lightbox
+    lightbox.style.display = 'flex';
+    setTimeout(() => {
+        lightbox.classList.add('active');
+    }, 10);
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('simple-lightbox');
+    
+    lightbox.classList.remove('active');
+    setTimeout(() => {
+        lightbox.style.display = 'none';
+    }, 300);
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Close lightbox when clicking outside the content
+document.addEventListener('click', (e) => {
+    const lightbox = document.getElementById('simple-lightbox');
+    if (e.target === lightbox) {
+        closeLightbox();
     }
+});
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const lightbox = document.getElementById('simple-lightbox');
+        if (lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    }
+});
+
+// Initialize plot map lightbox
+function initializePlotMapLightbox() {
+    const plotMapItems = document.querySelectorAll('.plot-map-item');
+    
+    plotMapItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('.plot-img');
+            const title = item.dataset.title;
+            const description = item.dataset.description;
+            
+            openLightbox(img.src, title, description);
+        });
+    });
 }
 
 // Initialize everything when DOM is loaded
@@ -846,6 +742,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start preloading and splash sequence
     preloadImages();
     
-    // Initialize lightbox after splash (will be called from splash completion)
-    // setTimeout(initializeLightbox, 500); // Moved to splash completion
+    // Initialize plot map lightbox after a short delay
+    setTimeout(initializePlotMapLightbox, 1000);
 });
