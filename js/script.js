@@ -739,8 +739,88 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Initialize lightbox when DOM is loaded
+// ===== SPLASH SCREEN FUNCTIONALITY ===== //
+function initializeSplashScreen() {
+    const splashScreen = document.getElementById('splash-screen');
+    const mainContent = document.getElementById('main-content');
+    
+    // Ensure splash screen is visible initially
+    splashScreen.style.display = 'flex';
+    mainContent.classList.remove('show');
+    
+    // Total splash duration: 4.5 seconds
+    // - Logo animation: 0.5s delay + 1.5s duration = 2s
+    // - Text animation: 1.2s delay + 1s duration = 2.2s
+    // - Loader animation: 2.2s delay + 2s duration = 4.2s
+    // - Extra buffer: 0.3s
+    const splashDuration = 4500; // 4.5 seconds
+    
+    // Start the exit sequence
+    setTimeout(() => {
+        // Add fade-out class to splash screen
+        splashScreen.classList.add('fade-out');
+        
+        // Show main content after splash starts fading
+        setTimeout(() => {
+            mainContent.classList.add('show');
+        }, 300);
+        
+        // Remove splash screen from DOM after fade completes
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+            
+            // Initialize other functionality after splash is complete
+            initializeLightbox();
+            
+            // Trigger any scroll-based animations
+            window.dispatchEvent(new Event('scroll'));
+        }, 800);
+        
+    }, splashDuration);
+}
+
+// Preload critical images for smooth experience
+function preloadImages() {
+    const criticalImages = [
+        'assets/IMG_4348.JPG', // Logo
+        'assets/PTSC_0064.JPG', // Hero background
+    ];
+    
+    let loadedCount = 0;
+    const totalImages = criticalImages.length;
+    
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.onload = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                // All critical images loaded, start splash screen
+                initializeSplashScreen();
+            }
+        };
+        img.onerror = () => {
+            loadedCount++;
+            if (loadedCount === totalImages) {
+                // Continue even if some images fail to load
+                initializeSplashScreen();
+            }
+        };
+        img.src = src;
+    });
+    
+    // Fallback: start splash screen after 2 seconds even if images haven't loaded
+    setTimeout(() => {
+        if (loadedCount < totalImages) {
+            initializeSplashScreen();
+        }
+    }, 2000);
+}
+
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Wait a bit for images to load
-    setTimeout(initializeLightbox, 500);
+    // Start preloading and splash sequence
+    preloadImages();
+    
+    // Initialize lightbox after splash (will be called from splash completion)
+    // setTimeout(initializeLightbox, 500); // Moved to splash completion
 });
