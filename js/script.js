@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.hero-slide');
     const indicators = document.querySelectorAll('.indicator');
     const totalSlides = slides.length;
+    let currentSlide = 0;
+    let slideInterval;
     
     function showSlide(index) {
         // Remove active class from all slides and indicators
@@ -118,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function nextSlide() {
         currentSlide = (currentSlide + 1) % totalSlides;
+        console.log('Hero slideshow advancing to slide:', currentSlide + 1, 'of', totalSlides);
         showSlide(currentSlide);
     }
     
@@ -137,6 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start the slideshow
     if (slides.length > 0) {
+        console.log('Initializing hero slideshow with', slides.length, 'slides');
         // Initialize first slide
         showSlide(0);
         startSlideshow();
@@ -147,6 +151,8 @@ document.addEventListener('DOMContentLoaded', function() {
             heroSection.addEventListener('mouseenter', stopSlideshow);
             heroSection.addEventListener('mouseleave', startSlideshow);
         }
+    } else {
+        console.log('No hero slides found');
     }
     
     // ===== GALLERY SCROLL FUNCTIONALITY ===== //
@@ -737,7 +743,7 @@ function initializePlotMapLightbox() {
     });
 }
 
-// Initialize clickable images lightbox
+// Initialize clickable images lightbox (for regular gallery)
 function initializeClickableImages() {
     const clickableImages = document.querySelectorAll('.clickable-img');
     
@@ -751,6 +757,189 @@ function initializeClickableImages() {
     });
 }
 
+// Property slideshow lightbox variables
+let currentPropertyImages = [];
+let currentPropertyIndex = 0;
+
+// Initialize property slideshow lightbox
+function initializePropertySlideshowLightbox() {
+    const propertyImages = document.querySelectorAll('.property-slideshow-img');
+    console.log('Found property slideshow images:', propertyImages.length); // Debug log
+    
+    // Build property images array (for all property slideshows)
+    currentPropertyImages = Array.from(propertyImages).map(img => ({
+        src: img.src,
+        title: img.dataset.title || img.alt,
+        description: img.dataset.description || '',
+        group: img.dataset.slideshowGroup || 'default'
+    }));
+    
+    console.log('Property images array:', currentPropertyImages); // Debug log
+    
+    propertyImages.forEach((img, index) => {
+        img.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Property image clicked:', img.dataset.title); // Debug log
+            
+            currentPropertyIndex = index;
+            const title = img.dataset.title || img.alt;
+            const description = img.dataset.description || '';
+            
+            openPropertyLightbox(img.src, title, description);
+        });
+    });
+}
+
+// Open property lightbox
+function openPropertyLightbox(imageSrc, title, description) {
+    const lightbox = document.getElementById('property-lightbox');
+    const lightboxImage = document.getElementById('property-lightbox-image');
+    const lightboxTitle = document.getElementById('property-lightbox-title');
+    const lightboxDescription = document.getElementById('property-lightbox-description');
+    
+    lightboxImage.src = imageSrc;
+    lightboxTitle.textContent = title;
+    lightboxDescription.textContent = description;
+    
+    lightbox.classList.add('active');
+    lightbox.style.display = 'flex';
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+// Close property lightbox
+function closePropertyLightbox() {
+    const lightbox = document.getElementById('property-lightbox');
+    lightbox.classList.remove('active');
+    
+    setTimeout(() => {
+        lightbox.style.display = 'none';
+    }, 300);
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Navigate property lightbox (only between images in the same group)
+function navigatePropertyLightbox(direction) {
+    if (currentPropertyImages.length === 0) return;
+    
+    // Get current image group
+    const currentGroup = currentPropertyImages[currentPropertyIndex].group;
+    
+    // Filter images to only those in the same group
+    const groupImages = currentPropertyImages.filter(img => img.group === currentGroup);
+    const currentGroupIndex = groupImages.findIndex(img => img.src === currentPropertyImages[currentPropertyIndex].src);
+    
+    let newGroupIndex = currentGroupIndex + direction;
+    
+    // Wrap around within the group
+    if (newGroupIndex >= groupImages.length) {
+        newGroupIndex = 0;
+    } else if (newGroupIndex < 0) {
+        newGroupIndex = groupImages.length - 1;
+    }
+    
+    // Find the new image in the main array
+    const newImage = groupImages[newGroupIndex];
+    currentPropertyIndex = currentPropertyImages.findIndex(img => img.src === newImage.src);
+    
+    console.log('Navigating to:', newImage.title); // Debug log
+    
+    // Update lightbox content
+    const lightboxImage = document.getElementById('property-lightbox-image');
+    const lightboxTitle = document.getElementById('property-lightbox-title');
+    const lightboxDescription = document.getElementById('property-lightbox-description');
+    
+    lightboxImage.src = newImage.src;
+    lightboxTitle.textContent = newImage.title;
+    lightboxDescription.textContent = newImage.description;
+}
+
+// ===== PROPERTY SLIDESHOW FUNCTIONS ===== //
+function changePropertySlide(slideshowId, direction) {
+    const slideshow = document.getElementById(slideshowId);
+    const slides = slideshow.querySelectorAll('.slide');
+    const indicators = slideshow.querySelectorAll('.indicator');
+    
+    // Find current active slide
+    let currentIndex = 0;
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            currentIndex = index;
+        }
+    });
+    
+    // Remove active class from current slide and indicator
+    slides[currentIndex].classList.remove('active');
+    indicators[currentIndex].classList.remove('active');
+    
+    // Calculate new index
+    let newIndex = currentIndex + direction;
+    if (newIndex >= slides.length) {
+        newIndex = 0;
+    } else if (newIndex < 0) {
+        newIndex = slides.length - 1;
+    }
+    
+    // Add active class to new slide and indicator
+    slides[newIndex].classList.add('active');
+    indicators[newIndex].classList.add('active');
+}
+
+function currentPropertySlide(slideshowId, slideNumber) {
+    const slideshow = document.getElementById(slideshowId);
+    const slides = slideshow.querySelectorAll('.slide');
+    const indicators = slideshow.querySelectorAll('.indicator');
+    
+    // Remove active class from all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Add active class to selected slide and indicator
+    const targetIndex = slideNumber - 1;
+    slides[targetIndex].classList.add('active');
+    indicators[targetIndex].classList.add('active');
+}
+
+// Auto-advance slideshow every 4 seconds
+function initializePropertySlideshows() {
+    const slideshows = document.querySelectorAll('.property-slideshow');
+    console.log('Found slideshows:', slideshows.length); // Debug log
+    
+    slideshows.forEach(slideshow => {
+        const slideshowId = slideshow.id;
+        console.log('Initializing slideshow:', slideshowId); // Debug log
+        let autoAdvanceTimer;
+        
+        // Start auto-advance
+        function startAutoAdvance() {
+            console.log('Starting auto-advance for:', slideshowId); // Debug log
+            autoAdvanceTimer = setInterval(() => {
+                console.log('Auto-advancing slideshow:', slideshowId); // Debug log
+                changePropertySlide(slideshowId, 1);
+            }, 4000); // Reduced to 4 seconds for better flow
+        }
+        
+        // Stop auto-advance
+        function stopAutoAdvance() {
+            console.log('Stopping auto-advance for:', slideshowId); // Debug log
+            if (autoAdvanceTimer) {
+                clearInterval(autoAdvanceTimer);
+            }
+        }
+        
+        // Pause on hover, resume on mouse leave
+        slideshow.addEventListener('mouseenter', stopAutoAdvance);
+        slideshow.addEventListener('mouseleave', startAutoAdvance);
+        
+        // Start the auto-advance
+        startAutoAdvance();
+    });
+}
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Start preloading and splash sequence
@@ -761,4 +950,12 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePlotMapLightbox();
         initializeClickableImages();
     }, 1000);
+    
+    // Initialize slideshow after splash screen (5 seconds)
+    setTimeout(() => {
+        initializePropertySlideshows();
+        // Initialize property slideshow lightbox
+        initializePropertySlideshowLightbox();
+        console.log('Property slideshows initialized'); // Debug log
+    }, 5500);
 });

@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=2025.11.19.19">
+    <link rel="stylesheet" href="css/styles.css?v=2025.11.22.63">
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
@@ -67,16 +67,16 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-carousel">
-            <div class="hero-slide active" style="background-image: url('assets/PTSC_0064.JPG');">
+            <div class="hero-slide active" style="background-image: url('assets/IMG_4345.JPG');">
                 <div class="hero-overlay"></div>
             </div>
-            <div class="hero-slide" style="background-image: url('assets/SING0018.JPG');">
+            <div class="hero-slide" style="background-image: url('assets/IMG_1057.jpg');">
                 <div class="hero-overlay"></div>
             </div>
-            <div class="hero-slide" style="background-image: url('assets/SING0025.JPG');">
+            <div class="hero-slide" style="background-image: url('assets/SING0022.JPG');">
                 <div class="hero-overlay"></div>
             </div>
-            <div class="hero-slide" style="background-image: url('assets/IMG_4345.JPG');">
+            <div class="hero-slide" style="background-image: url('assets/SING0027 (1).JPG');">
                 <div class="hero-overlay"></div>
             </div>
         </div>
@@ -167,11 +167,16 @@
                 </div>
                 <div class="about-images">
                     <div class="about-image-main">
-                        <img src="assets/SING0020.JPG" alt="Holbrook Estates Scenic Views" class="about-img-large">
+                        <img src="assets/IMG_0306.jpg" alt="Flathead Valley Mountain Views" class="about-img-large clickable-img" 
+                             data-lightbox="flathead-valley" 
+                             data-title="Flathead Valley Mountain Views" 
+                             data-description="Stunning panoramic views of the Flathead Valley and surrounding mountain ranges">
                     </div>
-                    <div class="about-image-grid">
-                        <img src="assets/IMG_3485.jpg" alt="Mountain Views" class="about-img-small">
-                        <img src="assets/SING0024.JPG" alt="Natural Beauty" class="about-img-small">
+                    <div class="about-image-secondary">
+                        <img src="assets/IMG_0309.jpg" alt="Flathead Valley Landscape" class="about-img-secondary clickable-img"
+                             data-lightbox="flathead-valley" 
+                             data-title="Flathead Valley Landscape" 
+                             data-description="Beautiful valley landscape showcasing the natural beauty of Montana">
                     </div>
                 </div>
             </div>
@@ -355,49 +360,93 @@
             </div>
             <div class="properties-slider">
                 <div class="property-card">
-                    <div class="property-image">
-                        <img src="assets/PTSC_0052.JPG" alt="228 Holbrook Dr" class="property-img">
+                    <div class="property-image property-slideshow" id="slideshow-228">
+                        <div class="slideshow-container">
+                            <div class="slide active">
+                                <img src="assets/PTSC_0052.JPG" alt="228 Holbrook Dr - View 1" class="property-img property-slideshow-img" 
+                                     data-slideshow-group="228-holbrook"
+                                     data-title="228 Holbrook Dr - Aerial View 1" 
+                                     data-description="Beautiful aerial view of this fabulous GT Construction design. Listed by Engel & Völkers Western Frontier for $999,000">
+                            </div>
+                            <div class="slide">
+                                <img src="assets/PTSC_0052+(1).JPG" alt="228 Holbrook Dr - View 2" class="property-img property-slideshow-img"
+                                     data-slideshow-group="228-holbrook"
+                                     data-title="228 Holbrook Dr - Aerial View 2" 
+                                     data-description="Another stunning aerial perspective of this custom home design showcasing the property's beautiful setting">
+                            </div>
+                        </div>
+                        <div class="slideshow-nav">
+                            <button class="slide-btn prev" onclick="changePropertySlide('slideshow-228', -1)">‹</button>
+                            <button class="slide-btn next" onclick="changePropertySlide('slideshow-228', 1)">›</button>
+                        </div>
+                        <div class="slide-indicators">
+                            <span class="indicator active" onclick="currentPropertySlide('slideshow-228', 1)"></span>
+                            <span class="indicator" onclick="currentPropertySlide('slideshow-228', 2)"></span>
+                        </div>
                     </div>
                     <div class="property-info">
                         <h3>228 Holbrook Dr</h3>
                         <p class="property-price">Listed $999,000</p>
                         <p class="property-description">Another fabulous design by GT Construction. Listed by Engel & Völkers Western Frontier</p>
-                        <p class="property-mls">MLS #30052667</p>
+                        <p class="property-mls">MLS#30052667</p>
                     </div>
                 </div>
                 
                 <div class="property-card">
                     <div class="property-image">
-                        <img src="assets/IMG_0217.jpg" alt="415 Charlotte Peak Dr" class="property-img">
+                        <img src="assets/IMG_0310.jpg" alt="415 Charlotte Peak Dr - SOLD" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="415 Charlotte Peak Dr - SOLD" 
+                             data-description="Beautiful completed custom home by GT Construction with stunning mountain views - SOLD property">
                     </div>
                     <div class="property-info">
-                        <h3>415 Charlotte Peak Dr</h3>
+                        <h3>415 Charlotte Peak Dr - SOLD</h3>
                         <p class="property-price">SOLD</p>
-                        <p class="property-description">Beautiful custom floor plan by GT Construction with stunning rear and kitchen design</p>
+                        <p class="property-description">Beautiful custom floor plan by GT Construction</p>
                     </div>
                 </div>
                 
                 <div class="property-card">
                     <div class="property-image">
-                        <img src="assets/PTSC_0059%2B(1).JPG" alt="183 Holbrook Dr" class="property-img">
+                        <img src="assets/183-holbrook-dr.png" alt="183 Holbrook Dr" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="183 Holbrook Dr" 
+                             data-description="Custom built by Tanninen Homes - Listed by Wrangler Realty for $975,000">
                     </div>
                     <div class="property-info">
                         <h3>183 Holbrook Dr</h3>
                         <p class="property-price">Listed $975,000</p>
-                        <p class="property-description">Custom built by Tanninen Homes – Listed by Wrangler Realty</p>
-                        <p class="property-mls">MLS #30047235</p>
+                        <p class="property-description">Custom built by Tanninen Homes - Listed by Wrangler Realty for more info</p>
+                        <p class="property-mls">MLS#30047235</p>
                     </div>
                 </div>
                 
                 <div class="property-card">
                     <div class="property-image">
-                        <img src="assets/965f0672f54dbb0beaa101355d74d57f-uncropped_scaled_within_1536_1152.jpeg" alt="25 South Scarface Peak Ct" class="property-img">
+                        <img src="assets/gohti.png" alt="25 South Scarface Peak Ct" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="25 South Scarface Peak Ct" 
+                             data-description="Spacious built by Tanninen Homes - Listed by Wrangler Realty for $1,175,000">
                     </div>
                     <div class="property-info">
                         <h3>25 South Scarface Peak Ct</h3>
                         <p class="property-price">Listed $1,175,000</p>
-                        <p class="property-description">Spacious build by Tanninen Homes – Listed by Wrangler Realty</p>
-                        <p class="property-mls">MLS #30047234</p>
+                        <p class="property-description">Spacious built by Tanninen Homes - Listed by Wrangler Realty for more info</p>
+                        <p class="property-mls">MLS#30047234</p>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="assets/westpic.png" alt="A Westward View - Tanninen Custom Homes under construction" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="A Westward View - Tanninen Custom Homes under construction" 
+                             data-description="Beautiful westward views with custom home development by Tanninen Homes - Under Construction">
+                    </div>
+                    <div class="property-info">
+                        <h3>A Westward View - Tanninen Custom Homes under construction</h3>
+                        <p class="property-price">Under Construction</p>
+                        <p class="property-description">Beautiful westward views with custom home development by Tanninen Homes</p>
                     </div>
                 </div>
             </div>
@@ -416,66 +465,87 @@
             <div class="gallery-container">
                 <div class="gallery-track">
                     <div class="gallery-card">
-                        <img src="assets/SING0018.JPG" alt="Mountain Landscape" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Mountain Views" data-description="Breathtaking natural scenery surrounding Holbrook Estates">
+                        <img src="assets/SING0012.JPG" alt="Mountain Landscape" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Mountain Views" data-description="Breathtaking natural scenery surrounding Holbrook Estates">
                         <div class="gallery-info">
                             <h4>Mountain Views</h4>
                             <p>Breathtaking natural scenery</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/PTSC_0052.JPG" alt="Custom Home" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Custom Homes" data-description="Luxury living spaces built by premier contractors">
+                        <img src="assets/SING0006.JPG" alt="Custom Home" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Custom Homes" data-description="Luxury living spaces built by premier contractors">
                         <div class="gallery-info">
                             <h4>Custom Homes</h4>
                             <p>Luxury living spaces</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/IMG_0216.jpg" alt="Interior Design" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Elegant Interiors" data-description="Premium finishes and sophisticated design elements">
+                        <img src="assets/IMG_4344.JPG" alt="Interior Design" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Elegant Interiors" data-description="Premium finishes and sophisticated design elements">
                         <div class="gallery-info">
                             <h4>Elegant Interiors</h4>
                             <p>Premium finishes</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/SING0025.JPG" alt="Natural Setting" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Park-like Setting" data-description="Pristine environment with mature landscaping">
+                        <img src="assets/IMG_3667.jpg" alt="Natural Setting" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Park-like Setting" data-description="Pristine environment with mature landscaping">
                         <div class="gallery-info">
                             <h4>Park-like Setting</h4>
                             <p>Pristine environment</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/IMG_0217.jpg" alt="Living Space" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Open Floor Plans" data-description="Modern living design with spacious layouts">
+                        <img src="assets/IMG_3661.jpg" alt="Living Space" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Open Floor Plans" data-description="Modern living design with spacious layouts">
                         <div class="gallery-info">
                             <h4>Open Floor Plans</h4>
                             <p>Modern living design</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/SING0024.JPG" alt="Scenic Views" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Scenic Beauty" data-description="Year-round mountain and valley views">
+                        <img src="assets/IMG_3635.jpg" alt="Scenic Views" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Scenic Beauty" data-description="Year-round mountain and valley views">
                         <div class="gallery-info">
                             <h4>Scenic Beauty</h4>
                             <p>Year-round views</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/IMG_4345.JPG" alt="Natural Landscape" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Natural Beauty" data-description="Untouched wilderness and pristine landscapes">
+                        <img src="assets/IMG_3541.jpg" alt="Natural Landscape" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Natural Beauty" data-description="Untouched wilderness and pristine landscapes">
                         <div class="gallery-info">
                             <h4>Natural Beauty</h4>
                             <p>Untouched wilderness</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/20140118_SKI_057.jpg" alt="Skiing" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Winter Sports" data-description="World-class skiing at nearby Whitefish Mountain Resort">
+                        <img src="assets/IMG_3480.jpg" alt="Premium Living" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Premium Living" data-description="Exceptional quality and craftsmanship in every detail">
                         <div class="gallery-info">
-                            <h4>Winter Sports</h4>
-                            <p>World-class skiing nearby</p>
+                            <h4>Premium Living</h4>
+                            <p>Exceptional quality</p>
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="assets/PTSC_0059+(1).JPG" alt="Property Grounds" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Spacious Lots" data-description="1-2 acre homesites with room for custom builds">
+                        <img src="assets/IMG_2824.jpg" alt="Luxury Features" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Luxury Features" data-description="High-end amenities and sophisticated design elements">
+                        <div class="gallery-info">
+                            <h4>Luxury Features</h4>
+                            <p>High-end amenities</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/IMG_3366.jpg" alt="Architectural Excellence" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Architectural Excellence" data-description="Outstanding design and construction quality">
+                        <div class="gallery-info">
+                            <h4>Architectural Excellence</h4>
+                            <p>Outstanding design</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/IMG_1057.jpg" alt="Spacious Lots" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Spacious Lots" data-description="1-2 acre homesites with room for custom builds">
                         <div class="gallery-info">
                             <h4>Spacious Lots</h4>
                             <p>1-2 acre homesites</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/IMG_0258.jpg" alt="Valley Views" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Valley Views" data-description="Stunning panoramic views of the Flathead Valley">
+                        <div class="gallery-info">
+                            <h4>Valley Views</h4>
+                            <p>Stunning panoramic views</p>
                         </div>
                     </div>
                 </div>
@@ -708,7 +778,21 @@
         </div>
     </div>
 
+    <!-- Property Slideshow Lightbox Modal -->
+    <div id="property-lightbox" class="simple-lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closePropertyLightbox()">&times;</button>
+            <button class="lightbox-nav lightbox-prev" onclick="navigatePropertyLightbox(-1)">‹</button>
+            <button class="lightbox-nav lightbox-next" onclick="navigatePropertyLightbox(1)">›</button>
+            <img id="property-lightbox-image" src="" alt="" class="lightbox-image">
+            <div class="lightbox-info">
+                <h3 id="property-lightbox-title" class="lightbox-title"></h3>
+                <p id="property-lightbox-description" class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="js/script.js?v=2025.11.19.16"></script>
+    <script src="js/script.js?v=2025.11.22.64"></script>
 </body>
 </html>
