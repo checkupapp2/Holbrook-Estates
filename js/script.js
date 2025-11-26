@@ -178,61 +178,42 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
+            // Get form data for validation
             const formData = new FormData(this);
             const firstName = formData.get('firstName');
             const lastName = formData.get('lastName');
             const email = formData.get('email');
-            const phone = formData.get('phone');
             const interest = formData.get('interest');
-            const message = formData.get('message');
-            const newsletter = formData.get('newsletter');
             
             // Basic validation
             if (!firstName || !lastName || !email || !interest) {
+                e.preventDefault();
                 showNotification('Please fill in all required fields.', 'error');
                 return;
             }
             
             if (!isValidEmail(email)) {
+                e.preventDefault();
                 showNotification('Please enter a valid email address.', 'error');
                 return;
             }
             
-            // Submit to Netlify
+            // Track form submission in Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    event_category: 'Contact',
+                    event_label: 'Holbrook Inquiry Form',
+                    value: 1
+                });
+            }
+            
+            // Show loading state
             const submitButton = this.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            fetch('/', {
-                method: 'POST',
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                // Track form submission in Google Analytics
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'form_submit', {
-                        event_category: 'Contact',
-                        event_label: 'Holbrook Inquiry Form',
-                        value: 1
-                    });
-                }
-                
-                showNotification('Thank you for your inquiry! We will contact you soon.', 'success');
-                this.reset();
-            })
-            .catch((error) => {
-                console.error('Form submission error:', error);
-                showNotification('There was an error sending your message. Please try again.', 'error');
-            })
-            .finally(() => {
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-            });
+            // Let the form submit naturally to Netlify
+            // The action="/thank-you" will handle the redirect
         });
     }
 

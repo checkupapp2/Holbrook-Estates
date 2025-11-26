@@ -5,15 +5,6 @@
 [build.environment]
   # No environment variables needed for static site
 
-# Form handling configuration
-[[forms]]
-  name = "holbrook-inquiry"
-  
-  # Email notifications for form submissions
-  [forms.settings]
-    # Send email notifications to this address
-    to = "ariejwilliams@gmail.com"
-    subject = "New Holbrook Estates Inquiry"
 
 # Redirect rules for SPA-like behavior (optional)
 [[redirects]]
