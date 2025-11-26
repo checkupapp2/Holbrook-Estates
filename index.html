@@ -16,6 +16,15 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QWQ79DXYM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4QWQ79DXYM');
+    </script>
 </head>
 <body>
     <!-- Splash Screen -->
@@ -580,7 +589,11 @@
                         <h3>Get In Touch</h3>
                         <p>Send us a message and we'll respond within 24 hours</p>
                     </div>
-                    <form id="inquiryForm" class="modern-form">
+                    <form id="inquiryForm" class="modern-form" netlify netlify-honeypot="bot-field" action="/thank-you" method="POST">
+                        <input type="hidden" name="form-name" value="holbrook-inquiry">
+                        <div style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name</label>

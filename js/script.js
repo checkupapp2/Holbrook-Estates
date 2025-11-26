@@ -185,12 +185,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const firstName = formData.get('firstName');
             const lastName = formData.get('lastName');
             const email = formData.get('email');
-            const subject = formData.get('subject');
+            const phone = formData.get('phone');
+            const interest = formData.get('interest');
             const message = formData.get('message');
             const newsletter = formData.get('newsletter');
             
             // Basic validation
-            if (!firstName || !lastName || !email || !subject || !message) {
+            if (!firstName || !lastName || !email || !interest) {
                 showNotification('Please fill in all required fields.', 'error');
                 return;
             }
@@ -200,9 +201,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Simulate form submission (replace with actual form handling)
-            showNotification('Thank you for your inquiry! We will contact you soon.', 'success');
-            this.reset();
+            // Submit to Netlify
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                // Track form submission in Google Analytics
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        event_category: 'Contact',
+                        event_label: 'Holbrook Inquiry Form',
+                        value: 1
+                    });
+                }
+                
+                showNotification('Thank you for your inquiry! We will contact you soon.', 'success');
+                this.reset();
+            })
+            .catch((error) => {
+                console.error('Form submission error:', error);
+                showNotification('There was an error sending your message. Please try again.', 'error');
+            })
+            .finally(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            });
         });
     }
 
