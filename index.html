@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holbrook Estates - Premier Residential Development in Kalispell, MT</title>
+    <meta name="description" content="Discover Holbrook Estates in Flathead Valley, Kalispell, MT. 35 exclusive 1-2 acre build-to-suit lots near Glacier National Park, Whitefish Mountain, and Flathead Lake.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css?v=2025.11.28.1">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4QWQ79DXYM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4QWQ79DXYM');
+    </script>
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <img src="assets/IMG_4348.JPG" alt="Holbrook Estates" class="splash-logo-img">
+                <div class="splash-text">
+                    <h1 class="splash-title">
+                        <span class="splash-title-main">Holbrook</span>
+                        <span class="splash-title-accent">Estates</span>
+                    </h1>
+                    <p class="splash-subtitle">Premier Residential Development</p>
+                </div>
+            </div>
+            <div class="splash-loader">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+        <div class="splash-overlay"></div>
+    </div>
+
+    <!-- Main Website Content -->
+    <div id="main-content" class="main-content">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/IMG_4348.JPG" alt="Holbrook Estates Logo" class="logo-img">
+                <h2>Holbrook Estates</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#location" class="nav-link">Location</a></li>
+                <li><a href="#properties" class="nav-link">Properties</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('assets/IMG_4345.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('assets/IMG_1057.jpg');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('assets/SING0022.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-slide" style="background-image: url('assets/SING0027-1.JPG');">
+                <div class="hero-overlay"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="badge-text">Est. 2024</span>
+                    <div class="badge-line"></div>
+                    <span class="badge-text">Flathead Valley</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-main">Holbrook</span>
+                    <span class="title-accent">Estates</span>
+                </h1>
+                <p class="hero-subtitle">Premier Residential Development in Flathead Valley</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">35</span>
+                        <span class="stat-label">Exclusive Lots</span>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1-2</span>
+                        <span class="stat-label">Acre Lots</span>
+                        <div class="stat-line"></div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">29</span>
+                        <span class="stat-label">Lots Remaining</span>
+                        <div class="stat-line"></div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Request Information</span>
+                        <div class="btn-arrow">→</div>
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <span>Discover More</span>
+                        <div class="btn-underline"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-navigation">
+            <button class="hero-nav-btn prev" onclick="changeSlide(-1)">‹</button>
+            <button class="hero-nav-btn next" onclick="changeSlide(1)">›</button>
+        </div>
+        <div class="hero-indicators">
+            <div class="indicators-container">
+                <span class="indicator active" onclick="currentSlide(1)">
+                    <div class="indicator-progress"></div>
+                </span>
+                <span class="indicator" onclick="currentSlide(2)">
+                    <div class="indicator-progress"></div>
+                </span>
+                <span class="indicator" onclick="currentSlide(3)">
+                    <div class="indicator-progress"></div>
+                </span>
+                <span class="indicator" onclick="currentSlide(4)">
+                    <div class="indicator-progress"></div>
+                </span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Flathead Valley Living</h2>
+                    <p class="section-subtitle">Where natural beauty meets custom home luxury</p>
+                    <p class="about-description">
+                        Holbrook Estates is a premier residential development located in the heart of Flathead Valley in Kalispell, MT. 
+                        Surrounded by the unmatched beauty of Glacier National Park, Whitefish Mountain Ski Resort and Flathead Lake, 
+                        this exclusive community offers 1-2 acre build-to-suit lots designed for custom home living.
+                    </p>
+                    <p class="about-description">
+                        With a total of 35 lots, 12 of the 29 lots remaining offer the rare opportunity of a secondary residence 
+                        up to 2,000 square feet. Set in a "park-like" setting with paved roads, our community features 
+                        2 plentiful water wells plus a separate fire well with backup generator for complete reliability.
+                    </p>
+                    <a href="#features" class="btn btn-outline">Discover More</a>
+                </div>
+                <div class="about-images">
+                    <div class="about-image-main">
+                        <img src="assets/IMG_0306.jpg" alt="Flathead Valley Mountain Views" class="about-img-large clickable-img" 
+                             data-lightbox="flathead-valley" 
+                             data-title="Flathead Valley Mountain Views" 
+                             data-description="Stunning panoramic views of the Flathead Valley and surrounding mountain ranges">
+                    </div>
+                    <div class="about-image-secondary">
+                        <img src="assets/IMG_0309.jpg" alt="Flathead Valley Landscape" class="about-img-secondary clickable-img"
+                             data-lightbox="flathead-valley" 
+                             data-title="Flathead Valley Landscape" 
+                             data-description="Beautiful valley landscape showcasing the natural beauty of Montana">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Showcase -->
+    <section class="attractions-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">World-Class Attractions</h2>
+                <p class="section-subtitle">Minutes from Montana's premier destinations</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/20140118_SKI_057.jpg" alt="Whitefish Mountain Resort" class="attraction-img">
+                    </div>
+                    <div class="attraction-content">
+                        <h3>Whitefish Mountain Resort</h3>
+                        <span class="distance">30 minutes away</span>
+                        <p>Over 3,000 skiable acres making it one of the largest ski resorts in the U.S. and Canada. State-of-the-art grooming, snowmaking, lifts, skiing, snowboarding, snowshoeing, and guided snowmobile rentals.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/glacier.jpg" alt="Glacier National Park" class="attraction-img">
+                    </div>
+                    <div class="attraction-content">
+                        <h3>Glacier National Park</h3>
+                        <span class="distance">45 minutes away</span>
+                        <p>More than 1 million acres including parts of two mountain ranges, over 130 named lakes, 1,000+ species of plants, and hundreds of animal species. The centerpiece of the "Crown of the Continent Ecosystem".</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="assets/lake.jpg" alt="Flathead Lake" class="attraction-img">
+                    </div>
+                    <div class="attraction-content">
+                        <h3>Flathead Lake</h3>
+                        <span class="distance">30 minutes south</span>
+                        <p>30 miles long and 16 miles wide, covering 197 square miles with a maximum depth of 370.7 ft. Located in a scenic part of Montana, flanked by two scenic highways.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Premium Amenities</h2>
+                <p class="section-subtitle">Designed for the discerning lifestyle</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏡</div>
+                    <h3 class="feature-title">Build-to-Suit Lots</h3>
+                    <p class="feature-description">35 exclusive 1-2 acre lots designed for custom home construction with 29 lots remaining for purchase.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title">Secondary Residences</h3>
+                    <p class="feature-description">12 lots offer the rare opportunity for a secondary residence up to 2,000 square feet - unique in the region.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3 class="feature-title">Fiber Optic Internet</h3>
+                    <p class="feature-description">Exclusive fiber optic Wi-Fi available at each lot, provided by Montana Sky for high-speed connectivity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛣️</div>
+                    <h3 class="feature-title">Paved Roads</h3>
+                    <p class="feature-description">Well-maintained paved roads throughout the community in a beautiful "park-like" setting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Low HOA Fees</h3>
+                    <p class="feature-description"><strong>$450 Yearly</strong> - Exceptionally low HOA fees with plenty of beautiful views and activities to enjoy year-round.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚰</div>
+                    <h3 class="feature-title">Water Fees</h3>
+                    <p class="feature-description"><strong>$400 Yearly</strong> - Includes landscaping irrigation with no additional water costs. Remarkably affordable for premium water service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <div class="location-content">
+                <div class="location-text">
+                    <h2 class="section-title">Prime Location</h2>
+                    <p class="section-subtitle">Perfectly positioned for luxury living</p>
+                    <div class="location-highlights">
+                        <div class="location-item">
+                            <h4>Glacier National Park</h4>
+                            <p><strong>45 minutes away</strong> - A national park encompassing more than 1 million acres and includes parts of two mountain ranges, more than 130 named lakes, more than 1,000 different species of plants, and hundreds of species of animals. This vast, pristine ecosystem is the centerpiece of the "Crown of the Continent Ecosystem".</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Flathead Lake</h4>
+                            <p><strong>30 minutes south</strong> - Located 7 miles south of Kalispell, Flathead Lake is approximately 30 miles long and 16 miles wide, covering 197 square miles. It has a maximum depth of 370.7 ft and lies in a scenic part of Montana, flanked by two scenic highways.</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Whitefish Mountain Resort</h4>
+                            <p><strong>30 minutes away</strong> - Located 35 miles west of Glacier National Park with over 3,000 skiable acres, making it one of the largest ski resorts in the U.S. and Canada. Offers state-of-the-art grooming, snowmaking, lifts, skiing, snowboarding, snowshoeing, and guided snowmobile rentals.</p>
+                        </div>
+                        <div class="location-item">
+                            <h4>Convenient Access</h4>
+                            <p>15 minutes to shopping • 20 minutes to Glacier International Airport • Close to excellent schools with multiple options to choose from</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <img src="assets/561592654.jpeg" alt="Holbrook Estates Location" class="location-img clickable-img" 
+                         data-lightbox="location-map" 
+                         data-title="Holbrook Estates Location Map" 
+                         data-description="Detailed location map showing proximity to Glacier National Park, Flathead Lake, and Whitefish Mountain Resort">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plot Map Overview Section -->
+    <section id="plot-map" class="plot-map-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Plot Map Overview</h2>
+                <p class="section-subtitle">Tap any image to view full size</p>
+            </div>
+            
+            <div class="plot-map-scroll">
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Listing Information" data-description="Current listing status and availability information">
+                    <img src="assets/listingsold.jpg" alt="Listing Information" class="plot-img">
+                    <span class="plot-label">Listing Information</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Official Plot Map" data-description="Detailed lot layout with numbers and dimensions">
+                    <img src="assets/plot01.jpg" alt="Official Plot Map" class="plot-img">
+                    <span class="plot-label">Official Plot Map</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Development Overview" data-description="Aerial view of the development area">
+                    <img src="assets/plot2.jpg" alt="Development Overview" class="plot-img">
+                    <span class="plot-label">Development Overview</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Site Layout" data-description="Comprehensive site development view">
+                    <img src="assets/SING0006.JPG" alt="Site Layout" class="plot-img">
+                    <span class="plot-label">Site Layout</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Property Boundaries" data-description="Clear view of lot boundaries and roads">
+                    <img src="assets/SING0008.JPG" alt="Property Boundaries" class="plot-img">
+                    <span class="plot-label">Property Boundaries</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Natural Setting" data-description="Beautiful landscape views of the development area">
+                    <img src="assets/SING0012.JPG" alt="Natural Setting" class="plot-img">
+                    <span class="plot-label">Natural Setting</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section id="properties" class="properties">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Holbrook Projects & Attractions</h2>
+                <p class="section-subtitle">Discover exceptional homes built in our community</p>
+                
+                <!-- View All Listings Button -->
+                <div class="properties-cta">
+                    <a href="https://sandyoconnell.purewestrealestate.com/search-listings/propertytype_land/communityname_holbrook%20estates/#/" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="listings-btn">
+                        <span class="btn-text">View All Available Lots</span>
+                        <span class="btn-icon">→</span>
+                    </a>
+                </div>
+            </div>
+            <div class="properties-slider">
+                <div class="property-card">
+                    <div class="property-image property-slideshow" id="slideshow-228">
+                        <div class="slideshow-container">
+                            <div class="slide active">
+                                <img src="assets/PTSC_0052.JPG" alt="228 Holbrook Dr - SOLD" class="property-img property-slideshow-img" 
+                                     data-slideshow-group="228-holbrook"
+                                     data-title="228 Holbrook Dr - SOLD" 
+                                     data-description="Beautiful aerial view of this fabulous GT Construction design - SOLD property">
+                            </div>
+                            <div class="slide">
+                                <img src="assets/PTSC_0052+(1).JPG" alt="228 Holbrook Dr - SOLD" class="property-img property-slideshow-img"
+                                     data-slideshow-group="228-holbrook"
+                                     data-title="228 Holbrook Dr - SOLD" 
+                                     data-description="Another stunning aerial perspective of this custom home design - SOLD property">
+                            </div>
+                        </div>
+                        <div class="slideshow-nav">
+                            <button class="slide-btn prev" onclick="changePropertySlide('slideshow-228', -1)">‹</button>
+                            <button class="slide-btn next" onclick="changePropertySlide('slideshow-228', 1)">›</button>
+                        </div>
+                        <div class="slide-indicators">
+                            <span class="indicator active" onclick="currentPropertySlide('slideshow-228', 1)"></span>
+                            <span class="indicator" onclick="currentPropertySlide('slideshow-228', 2)"></span>
+                        </div>
+                    </div>
+                    <div class="property-info">
+                        <h3>228 Holbrook Dr - SOLD</h3>
+                        <p class="property-price">SOLD</p>
+                        <p class="property-description">Another fabulous design by GT Construction - SOLD property</p>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="assets/IMG_0310.jpg" alt="415 Charlotte Peak Dr - SOLD" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="415 Charlotte Peak Dr - SOLD" 
+                             data-description="Beautiful completed custom home by GT Construction with stunning mountain views - SOLD property">
+                    </div>
+                    <div class="property-info">
+                        <h3>415 Charlotte Peak Dr - SOLD</h3>
+                        <p class="property-price">SOLD</p>
+                        <p class="property-description">Beautiful custom floor plan by GT Construction</p>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="assets/183-holbrook-dr.png" alt="183 Holbrook Dr" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="183 Holbrook Dr" 
+                             data-description="Custom built by Tanninen Homes - Listed by Wrangler Realty for $975,000">
+                    </div>
+                    <div class="property-info">
+                        <h3>183 Holbrook Dr</h3>
+                        <p class="property-price">Listed $975,000</p>
+                        <p class="property-description">Custom built by Tanninen Homes - Listed by Wrangler Realty for more info</p>
+                        <p class="property-mls">MLS#30047235</p>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="assets/gohti.png" alt="25 South Scarface Peak Ct" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="25 South Scarface Peak Ct" 
+                             data-description="Spacious built by Tanninen Homes - Listed by Wrangler Realty for $1,175,000">
+                    </div>
+                    <div class="property-info">
+                        <h3>25 South Scarface Peak Ct</h3>
+                        <p class="property-price">Listed $1,175,000</p>
+                        <p class="property-description">Spacious built by Tanninen Homes - Listed by Wrangler Realty for more info</p>
+                        <p class="property-mls">MLS#30047234</p>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="assets/westpic.png" alt="A Westward View - Tanninen Custom Homes under construction" class="property-img clickable-img" 
+                             data-lightbox="experience-luxury" 
+                             data-title="A Westward View - Tanninen Custom Homes under construction" 
+                             data-description="Beautiful westward views with custom home development by Tanninen Homes - Under Construction">
+                    </div>
+                    <div class="property-info">
+                        <h3>A Westward View - Tanninen Custom Homes under construction</h3>
+                        <p class="property-price">Under Construction</p>
+                        <p class="property-description">Beautiful westward views with custom home development by Tanninen Homes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Experience Luxury</h2>
+                <p class="section-subtitle">A glimpse into exceptional living</p>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <div class="gallery-card">
+                        <img src="assets/Luxury Features.webp" alt="Luxury Features" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Luxury Features" data-description="High-end amenities and sophisticated design elements">
+                        <div class="gallery-info">
+                            <h4>Luxury Features</h4>
+                            <p>High-end amenities</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/openfloor.jpg" alt="Open Floor Plans" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Open Floor Plans" data-description="Modern living design with spacious layouts">
+                        <div class="gallery-info">
+                            <h4>Open Floor Plans</h4>
+                            <p>Modern living design</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/Custom Homes.JPG" alt="Custom Homes" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Custom Homes" data-description="Luxury living spaces built by premier contractors">
+                        <div class="gallery-info">
+                            <h4>Custom Homes</h4>
+                            <p>Luxury living spaces</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/Park Like Setting.JPG" alt="Park Like Setting" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Park Like Setting" data-description="Pristine environment with mature landscaping">
+                        <div class="gallery-info">
+                            <h4>Park Like Setting</h4>
+                            <p>Pristine environment</p>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="assets/Spacious Lots.JPG" alt="Spacious Lots" class="gallery-img clickable-img" data-lightbox="experience-luxury" data-title="Spacious Lots" data-description="1-2 acre homesites with room for custom builds">
+                        <div class="gallery-info">
+                            <h4>Spacious Lots</h4>
+                            <p>1-2 acre homesites</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="gallery-btn gallery-btn-prev" onclick="scrollGallery(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="gallery-btn gallery-btn-next" onclick="scrollGallery(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Modern Design -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <!-- Hero Header -->
+            <div class="contact-hero">
+                <h2 class="section-title">Ready to Build Your Dream?</h2>
+                <p class="section-subtitle">Let's start the conversation about your future home at Holbrook Estates</p>
+            </div>
+            
+            <!-- Modern 3-Column Layout -->
+            <div class="contact-modern-grid">
+                <!-- Contact Form - Featured -->
+                <div class="contact-form-modern">
+                    <div class="form-header">
+                        <h3>Get In Touch</h3>
+                        <p>Send us a message and we'll respond within 24 hours</p>
+                    </div>
+                    <form id="inquiryForm" name="holbrook-inquiry" class="modern-form" netlify netlify-honeypot="bot-field" action="/thank-you" method="POST">
+                        <input type="hidden" name="form-name" value="holbrook-inquiry">
+                        <div style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In</label>
+                            <select id="interest" name="interest" required>
+                                <option value="">Select an option</option>
+                                <option value="lot-purchase">Purchasing a Lot</option>
+                                <option value="custom-build">Custom Home Build</option>
+                                <option value="hoa-info">HOA Information</option>
+                                <option value="site-visit">Schedule Site Visit</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your dream home..."></textarea>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Keep me updated on new lots and community news</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-modern">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Primary Agent - Sandy -->
+                <div class="agent-featured">
+                    <div class="agent-header">
+                        <h3>Your Primary Contact</h3>
+                        <p>Expert guidance for your Holbrook Estates journey</p>
+                    </div>
+                    <div class="agent-card-modern primary-agent">
+                        <div class="agent-photo-modern">
+                            <img src="assets/sandyheadshot.png" alt="Sandy O'Connell" class="agent-img-modern">
+                            <div class="agent-badge">Primary Contact</div>
+                        </div>
+                        <div class="agent-details">
+                            <h4>Sandy O'Connell</h4>
+                            <p class="agent-title">Senior Real Estate Advisor</p>
+                            <p class="agent-company">PureWest Real Estate | Christie's International</p>
+                            
+                            <div class="contact-methods">
+                                <a href="tel:4062707541" class="contact-method">
+                                    <span class="contact-icon">📞</span>
+                                    <div>
+                                        <strong>Call Direct</strong>
+                                        <p>406.270.7541</p>
+                                    </div>
+                                </a>
+                                <a href="mailto:Sandy@PureWestMT.com" class="contact-method">
+                                    <span class="contact-icon">📧</span>
+                                    <div>
+                                        <strong>Email</strong>
+                                        <p>Sandy@PureWestMT.com</p>
+                                    </div>
+                                </a>
+                                <a href="https://PureWestRealEstate.com" target="_blank" class="contact-method">
+                                    <span class="contact-icon">🌐</span>
+                                    <div>
+                                        <strong>Website</strong>
+                                        <p>PureWestRealEstate.com</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Additional Info & Secondary Agent -->
+                <div class="contact-additional">
+                    <div class="info-card">
+                        <h4>📋 HOA Information</h4>
+                        <p>Request a copy of our HOA Codes, Covenants and Restrictions to learn about community guidelines and fees.</p>
+                        <button class="btn btn-outline btn-small" onclick="document.getElementById('interest').value='hoa-info'; document.getElementById('message').value='Please send me the HOA Codes, Covenants and Restrictions.';">Request HOA Docs</button>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h4>🏗️ Custom Building</h4>
+                        <p>From conceptualizing to constructing, we're ready to design your architectural dream with quality craftsmanship.</p>
+                    </div>
+                    
+                    <!-- Secondary Agent -->
+                    <div class="agent-secondary">
+                        <h4>Additional Support</h4>
+                        <div class="agent-card-compact">
+                            <img src="assets/advisorphoto-BruyerKristi-s-web-large.jpg" alt="Kristi Bruyer" class="agent-img-small">
+                            <div class="agent-info-compact">
+                                <h5>Kristi Bruyer</h5>
+                                <p>Engel & Völkers Western Frontier</p>
+                                <a href="tel:4062507288">📞 (406) 250-7288</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <div class="image-modal-content">
+            <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" class="image-modal-img" src="" alt="">
+            <div id="modalCaption" class="image-modal-caption">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="brand-content">
+                        <img src="assets/IMG_4348.JPG" alt="Holbrook Estates Logo" class="footer-logo">
+                        <div class="brand-text">
+                            <h3>Holbrook Estates</h3>
+                            <p>Premier Residential Development</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <div class="nav-group">
+                        <a href="#about" class="footer-link">About</a>
+                        <a href="#features" class="footer-link">Features</a>
+                        <a href="#location" class="footer-link">Location</a>
+                    </div>
+                    <div class="nav-group">
+                        <a href="#properties" class="footer-link">Properties</a>
+                        <a href="#gallery" class="footer-link">Gallery</a>
+                        <a href="#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="contact-info">
+                        <p class="contact-label">Ready to Learn More?</p>
+                        <a href="#contact" class="contact-cta">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="copyright">&copy; 2025 Holbrook Estates. All rights reserved.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/profile.php?id=61578359254373" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=xslfvApXy7w" class="social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    </div> <!-- End Main Content -->
+
+    <!-- Simple Lightbox Modal -->
+    <div id="simple-lightbox" class="simple-lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <img id="lightbox-image" src="" alt="" class="lightbox-image">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title" class="lightbox-title"></h3>
+                <p id="lightbox-description" class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Property Slideshow Lightbox Modal -->
+    <div id="property-lightbox" class="simple-lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closePropertyLightbox()">&times;</button>
+            <button class="lightbox-nav lightbox-prev" onclick="navigatePropertyLightbox(-1)">‹</button>
+            <button class="lightbox-nav lightbox-next" onclick="navigatePropertyLightbox(1)">›</button>
+            <img id="property-lightbox-image" src="" alt="" class="lightbox-image">
+            <div class="lightbox-info">
+                <h3 id="property-lightbox-title" class="lightbox-title"></h3>
+                <p id="property-lightbox-description" class="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/script.js?v=2025.11.22.64"></script>
+</body>
+</html>
