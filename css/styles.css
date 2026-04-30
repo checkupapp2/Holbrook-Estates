@@ -3837,6 +3837,12 @@ p {
     color: var(--white);
 }
 
+.event-banner-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 /* Event Banner Lightbox */
 .event-lightbox {
     display: none;
@@ -3913,6 +3919,10 @@ p {
     
     .event-banner-date {
         font-size: 1rem;
+    }
+
+    .event-banner-actions {
+        margin-top: 18px;
     }
 }
 
