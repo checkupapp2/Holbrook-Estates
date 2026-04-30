@@ -4,6 +4,30 @@
 let currentSlide = 0;
 let slideInterval;
 
+// ===== EVENT BANNER LIGHTBOX ===== //
+function openEventLightbox() {
+    const lightbox = document.getElementById('eventLightbox');
+    if (lightbox) {
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeEventLightbox() {
+    const lightbox = document.getElementById('eventLightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeEventLightbox();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===== MOBILE NAVIGATION ===== //

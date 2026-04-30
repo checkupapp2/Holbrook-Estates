@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=2025.11.28.1">
+    <link rel="stylesheet" href="css/styles.css?v=2026.04.29.7">
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
@@ -154,6 +154,18 @@
             <div class="scroll-arrow"></div>
         </div>
     </section>
+
+    <!-- Temporary Event Banner -->
+    <div class="event-banner">
+        <div class="event-banner-content">
+            <img src="assets/bbq-smoker.jpg" alt="Peterbilt Smoker" class="event-banner-img" onclick="openEventLightbox()">
+            <div class="event-banner-text">
+                <h3 class="event-banner-title">🍖 Holbrook Estates Community BBQ</h3>
+                <p class="event-banner-details">Home Builders Welcome • Property Owners Welcome</p>
+                <p class="event-banner-date"><strong>May 30th | 12:00 PM</strong> — Location: Adjacent to the Well House</p>
+            </div>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -436,16 +448,15 @@
                 
                 <div class="property-card">
                     <div class="property-image">
-                        <img src="assets/gohti.png" alt="25 South Scarface Peak Ct" class="property-img clickable-img" 
+                        <img src="assets/gohti.png" alt="25 South Scarface Peak Ct - SOLD" class="property-img clickable-img" 
                              data-lightbox="experience-luxury" 
-                             data-title="25 South Scarface Peak Ct" 
-                             data-description="Spacious built by Tanninen Homes - Listed by Wrangler Realty for $1,175,000">
+                             data-title="25 South Scarface Peak Ct - SOLD" 
+                             data-description="SOLD - Spacious built by Tanninen Homes">
                     </div>
                     <div class="property-info">
-                        <h3>25 South Scarface Peak Ct</h3>
-                        <p class="property-price">Listed $1,175,000</p>
-                        <p class="property-description">Spacious built by Tanninen Homes - Listed by Wrangler Realty for more info</p>
-                        <p class="property-mls">MLS#30047234</p>
+                        <h3>25 South Scarface Peak Ct - SOLD</h3>
+                        <p class="property-price">SOLD</p>
+                        <p class="property-description">SOLD property - Spacious built by Tanninen Homes</p>
                     </div>
                 </div>
                 
@@ -638,8 +649,8 @@
                 <div class="contact-additional">
                     <div class="info-card">
                         <h4>📋 HOA Information</h4>
-                        <p>Request a copy of our HOA Codes, Covenants and Restrictions to learn about community guidelines and fees.</p>
-                        <button class="btn btn-outline btn-small" onclick="document.getElementById('interest').value='hoa-info'; document.getElementById('message').value='Please send me the HOA Codes, Covenants and Restrictions.';">Request HOA Docs</button>
+                        <p>Download our HOA Codes, Covenants and Restrictions to learn about community guidelines and fees.</p>
+                        <a href="assets/Holbrook_Estates_CCRs.docx" download class="btn btn-outline btn-small">Download CC&Rs</a>
                     </div>
                     
                     <div class="info-card">
@@ -647,18 +658,6 @@
                         <p>From conceptualizing to constructing, we're ready to design your architectural dream with quality craftsmanship.</p>
                     </div>
                     
-                    <!-- Secondary Agent -->
-                    <div class="agent-secondary">
-                        <h4>Additional Support</h4>
-                        <div class="agent-card-compact">
-                            <img src="assets/advisorphoto-BruyerKristi-s-web-large.jpg" alt="Kristi Bruyer" class="agent-img-small">
-                            <div class="agent-info-compact">
-                                <h5>Kristi Bruyer</h5>
-                                <p>Engel & Völkers Western Frontier</p>
-                                <a href="tel:4062507288">📞 (406) 250-7288</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -760,7 +759,15 @@
         </div>
     </div>
 
+    <!-- Event Banner Lightbox -->
+    <div class="event-lightbox" id="eventLightbox" onclick="closeEventLightbox()">
+        <div class="event-lightbox-content" onclick="event.stopPropagation()">
+            <span class="event-lightbox-close" onclick="closeEventLightbox()">&times;</span>
+            <img src="assets/bbq-smoker.jpg" alt="Peterbilt Smoker - Community BBQ" class="event-lightbox-img">
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="js/script.js?v=2025.11.22.64"></script>
+    <script src="js/script.js?v=2026.04.29.1"></script>
 </body>
 </html>
