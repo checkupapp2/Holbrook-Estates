@@ -773,7 +773,7 @@ function initializePlotMapLightbox() {
             const title = item.dataset.title;
             const description = item.dataset.description;
             
-            openLightbox(img.src, title, description);
+            openLightbox(img.currentSrc || img.src, title, description);
         });
     });
 }

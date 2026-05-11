@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=2026.04.29.7">
+    <link rel="stylesheet" href="css/styles.css?v=2026.05.11.9">
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
@@ -155,17 +155,13 @@
         </div>
     </section>
 
-    <!-- Temporary Event Banner -->
+    <!-- Community Image Banner -->
     <div class="event-banner">
         <div class="event-banner-content">
-            <img src="assets/bbq-smoker.jpg" alt="Peterbilt Smoker" class="event-banner-img" onclick="openEventLightbox()">
+            <img src="assets/IMG_0733.JPG" alt="Holbrook Estates entrance with mountain views" class="event-banner-img" onclick="openEventLightbox()">
             <div class="event-banner-text">
-                <h3 class="event-banner-title">🍖 Holbrook Estates Community BBQ</h3>
-                <p class="event-banner-details">Home Builders Welcome • Property Owners Welcome</p>
-                <p class="event-banner-date"><strong>May 30th | 12:00 PM</strong> — Location: Adjacent to the Well House</p>
-                <div class="event-banner-actions">
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=427+Charlotte+Peak+Dr" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Directions</a>
-                </div>
+                <span class="event-banner-kicker">Welcome to Holbrook Estates</span>
+                <h3 class="event-banner-title">Mountain Views. Custom Homes. Flathead Valley Living.</h3>
             </div>
         </div>
     </div>
@@ -195,12 +191,6 @@
                              data-lightbox="flathead-valley" 
                              data-title="Flathead Valley Mountain Views" 
                              data-description="Stunning panoramic views of the Flathead Valley and surrounding mountain ranges">
-                    </div>
-                    <div class="about-image-secondary">
-                        <img src="assets/IMG_0309.jpg" alt="Flathead Valley Landscape" class="about-img-secondary clickable-img"
-                             data-lightbox="flathead-valley" 
-                             data-title="Flathead Valley Landscape" 
-                             data-description="Beautiful valley landscape showcasing the natural beauty of Montana">
                     </div>
                 </div>
             </div>
@@ -337,8 +327,16 @@
             
             <div class="plot-map-scroll">
                 <div class="plot-map-item" data-lightbox="plot-maps" data-title="Official Plot Map" data-description="Detailed lot layout with numbers and dimensions">
-                    <img src="assets/plot01.jpg" alt="Official Plot Map" class="plot-img">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="assets/tall-holbrook.png">
+                        <img src="assets/wide-holbrook.png" alt="Official Plot Map" class="plot-img">
+                    </picture>
                     <span class="plot-label">Official Plot Map</span>
+                </div>
+                
+                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Current Listings" data-description="Current Holbrook Estates listings and availability">
+                    <img src="assets/listingshe.png" alt="Current Listings" class="plot-img">
+                    <span class="plot-label">Current Listings</span>
                 </div>
                 
                 <div class="plot-map-item" data-lightbox="plot-maps" data-title="Development Overview" data-description="Aerial view of the development area">
@@ -637,7 +635,7 @@
                     <div class="info-card">
                         <h4>📋 HOA Information</h4>
                         <p>Download our HOA Codes, Covenants and Restrictions to learn about community guidelines and fees.</p>
-                        <a href="assets/Holbrook_Estates_CCRs.docx" download class="btn btn-outline btn-small">Download CC&Rs</a>
+                        <a href="https://docs.google.com/gview?url=https%3A%2F%2Fgithub.com%2Fcheckupapp2%2FHolbrook-Estates%2Fraw%2Fmain%2Fassets%2FHolbrook_Estates_CCRs.docx&embedded=false" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-small">Download CC&Rs</a>
                     </div>
                     
                     <div class="info-card">
@@ -750,11 +748,11 @@
     <div class="event-lightbox" id="eventLightbox" onclick="closeEventLightbox()">
         <div class="event-lightbox-content" onclick="event.stopPropagation()">
             <span class="event-lightbox-close" onclick="closeEventLightbox()">&times;</span>
-            <img src="assets/bbq-smoker.jpg" alt="Peterbilt Smoker - Community BBQ" class="event-lightbox-img">
+            <img src="assets/IMG_0733.JPG" alt="Holbrook Estates entrance with mountain views" class="event-lightbox-img">
         </div>
     </div>
 
     <!-- Scripts -->
-    <script src="js/script.js?v=2026.04.29.1"></script>
+    <script src="js/script.js?v=2026.05.11.1"></script>
 </body>
 </html>

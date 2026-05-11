@@ -691,9 +691,8 @@ p {
 
 .about-images {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 1rem;
-    height: 400px;
+    grid-template-columns: 1fr;
+    height: 520px;
 }
 
 .about-image-main {
@@ -2846,7 +2845,7 @@ p {
     }
     
     .about-image-main {
-        height: 250px;
+        height: 360px;
     }
     
     .about-image-grid {
@@ -3774,73 +3773,109 @@ p {
     }
 }
 
-/* ===== TEMPORARY EVENT BANNER ===== */
+/* ===== COMMUNITY IMAGE BANNER ===== */
 .event-banner {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
-    padding: 50px 24px;
+    background: linear-gradient(135deg, #0b1220 0%, #1a1a1a 100%);
+    padding: 0;
     position: relative;
     z-index: 100;
-    border-bottom: 4px solid var(--accent-color);
-    border-top: 4px solid var(--accent-color);
+    overflow: hidden;
+    border-top: 1px solid rgba(201, 169, 110, 0.45);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.45);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
 }
 
 .event-banner-content {
-    max-width: var(--max-width);
+    max-width: 100%;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    height: clamp(168px, 19.2vw, 252px);
+    max-height: 252px;
+    min-height: 168px;
+    position: relative;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.event-banner-content::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: 
+        radial-gradient(circle at 18% 18%, rgba(201, 169, 110, 0.28), transparent 28%),
+        linear-gradient(90deg, rgba(8, 13, 23, 0.34) 0%, rgba(8, 13, 23, 0.1) 42%, rgba(8, 13, 23, 0.46) 100%);
+    pointer-events: none;
+}
+
+.event-banner-content::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    box-shadow: inset 0 0 35px rgba(255, 255, 255, 0.08);
+    pointer-events: none;
 }
 
 .event-banner-img {
-    width: 220px;
-    height: 165px;
+    width: 100%;
+    height: clamp(168px, 19.2vw, 252px);
+    max-height: 252px;
+    min-height: 168px;
     object-fit: cover;
-    border-radius: 12px;
-    border: 3px solid var(--accent-color);
-    flex-shrink: 0;
+    object-position: center 38%;
+    background: #0b1220;
+    border-radius: 0;
+    border: 0;
+    grid-area: 1 / 1;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s ease, filter 0.6s ease;
+    box-shadow: none;
 }
 
 .event-banner-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 35px rgba(201, 169, 110, 0.5);
+    transform: scale(1.015);
+    filter: brightness(1.08) saturate(1.08);
 }
 
 .event-banner-text {
-    text-align: center;
+    grid-area: 1 / 1;
+    position: relative;
+    z-index: 3;
+    width: fit-content;
+    max-width: min(420px, calc(100% - 48px));
+    margin: 0 18px 14px auto;
+    align-self: end;
+    text-align: right;
+    padding: 7px 11px;
+    background: rgba(8, 13, 23, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+}
+
+.event-banner-kicker {
+    display: inline-block;
+    font-family: var(--font-secondary);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 4px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
 .event-banner-title {
     font-family: var(--font-primary);
-    font-size: 2.5rem;
+    font-size: clamp(0.82rem, 1.25vw, 1.1rem);
     font-weight: 600;
     color: var(--white);
-    margin-bottom: 12px;
-}
-
-.event-banner-details {
-    font-family: var(--font-secondary);
-    font-size: 1.25rem;
-    color: var(--accent-light);
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
-}
-
-.event-banner-date {
-    font-family: var(--font-secondary);
-    font-size: 1.15rem;
-    color: var(--white);
-}
-
-.event-banner-actions {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
+    margin-bottom: 0;
+    line-height: 1.12;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
 }
 
 /* Event Banner Lightbox */
@@ -3889,66 +3924,52 @@ p {
     color: var(--accent-color);
 }
 
-.event-banner-date strong {
-    color: var(--accent-color);
-}
-
 /* Mobile responsive event banner */
 @media (max-width: 768px) {
-    .event-banner {
-        padding: 35px 20px;
-    }
-    
     .event-banner-content {
-        gap: 25px;
-        flex-direction: column;
+        height: clamp(156px, 38.4vw, 228px);
+        max-height: 228px;
+        min-height: 156px;
     }
     
     .event-banner-img {
-        width: 200px;
-        height: 150px;
+        height: clamp(156px, 38.4vw, 228px);
+        max-height: 228px;
+        min-height: 156px;
+    }
+    
+    .event-banner-text {
+        text-align: center;
+        width: fit-content;
+        max-width: calc(100% - 32px);
+        margin: 0 16px 8px;
+        padding: 7px 10px;
     }
     
     .event-banner-title {
-        font-size: 2rem;
-    }
-    
-    .event-banner-details {
-        font-size: 1.1rem;
-    }
-    
-    .event-banner-date {
-        font-size: 1rem;
-    }
-
-    .event-banner-actions {
-        margin-top: 18px;
+        font-size: 0.82rem;
     }
 }
 
 @media (max-width: 480px) {
-    .event-banner {
-        padding: 30px 15px;
-    }
-    
     .event-banner-content {
-        gap: 20px;
+        height: 174px;
+        max-height: 174px;
+        min-height: 174px;
     }
     
     .event-banner-img {
-        width: 180px;
-        height: 135px;
+        height: 174px;
+        max-height: 174px;
+        min-height: 174px;
     }
     
     .event-banner-title {
-        font-size: 1.6rem;
+        font-size: 0.72rem;
     }
     
-    .event-banner-details {
-        font-size: 1rem;
-    }
-    
-    .event-banner-date {
-        font-size: 0.95rem;
+    .event-banner-kicker {
+        font-size: 0.5rem;
+        letter-spacing: 0.14em;
     }
 }
