@@ -208,6 +208,12 @@ p {
     gap: 1rem;
 }
 
+.nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
 .logo-img {
     height: 80px;
     width: auto;
@@ -222,13 +228,25 @@ p {
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
 }
 
-.nav-logo h2 {
+.nav-brand-text h2 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary-color);
     margin: 0;
     font-family: var(--font-primary);
     letter-spacing: -0.02em;
+    line-height: 1;
+}
+
+.nav-brand-text p {
+    font-family: var(--font-secondary);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    margin: 0;
+    text-transform: uppercase;
 }
 
 .nav-menu {
@@ -262,6 +280,45 @@ p {
     font-weight: 600;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.68rem 0.95rem;
+    border-radius: 999px;
+    font-family: var(--font-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: var(--transition-smooth);
+}
+
+.nav-cta-primary {
+    background: var(--accent-color);
+    color: var(--white);
+    border: 2px solid var(--accent-color);
+}
+
+.nav-cta-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid rgba(26, 26, 26, 0.18);
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
 .hamburger {
     display: none;
     flex-direction: column;
@@ -279,13 +336,10 @@ p {
 /* ===== HERO SECTION ===== */
 .hero {
     position: relative;
-    min-height: 100vh;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    min-height: calc(100vh - 104px);
+    height: calc(100vh - 104px);
+    margin-top: 104px;
     overflow: hidden;
-    padding-top: 80px; /* Account for fixed navbar */
 }
 
 .hero-carousel {
@@ -320,7 +374,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.5) 50%, rgba(26, 26, 26, 0.3) 100%);
+    background: transparent;
     z-index: 1;
 }
 
@@ -2637,6 +2691,10 @@ p {
         left: 0;
     }
     
+    .nav-actions {
+        display: none;
+    }
+    
     .hamburger {
         display: flex;
     }
@@ -2702,8 +2760,9 @@ p {
     
     .hero {
         min-height: auto;
-        height: auto;
-        padding: 120px 0 3rem 0;
+        height: 70vh;
+        margin-top: 96px;
+        padding: 0;
         background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
     }
     
@@ -2931,8 +2990,13 @@ p {
         height: 65px;
     }
     
-    .nav-logo h2 {
+    .nav-brand-text h2 {
         font-size: 1.75rem;
+    }
+    
+    .nav-brand-text p {
+        font-size: 0.58rem;
+        max-width: 250px;
     }
     
     
@@ -2947,6 +3011,37 @@ p {
 }
 
 @media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .nav-container {
+        padding: 0 14px;
+    }
+    
+    .nav-menu {
+        top: 83px;
+    }
+    
+    .nav-logo {
+        gap: 0.65rem;
+    }
+    
+    .logo-img {
+        height: 58px;
+    }
+    
+    .nav-brand-text h2 {
+        font-size: 1.65rem;
+    }
+    
+    .nav-brand-text p {
+        font-size: 0.52rem;
+        max-width: 215px;
+        letter-spacing: 0.04em;
+        line-height: 1.2;
+    }
+    
     .hero-buttons .btn {
         width: 100%;
         max-width: 280px;
@@ -2962,9 +3057,24 @@ p {
     
     .hero {
         min-height: auto;
-        height: auto;
-        padding: 100px 0 2rem 0;
-        background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6));
+        height: 50vh;
+        margin-top: 83px;
+        padding: 0;
+        background: transparent;
+    }
+    
+    .hero-indicators {
+        bottom: 0.75rem;
+    }
+    
+    .indicators-container {
+        padding: 0.7rem 1.2rem;
+        gap: 1rem;
+    }
+    
+    .indicator {
+        width: 30px;
+        height: 3px;
     }
     
     .hero-content {
@@ -3689,13 +3799,11 @@ p {
 /* Main content initially hidden */
 .main-content {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    transition: opacity 0.8s ease 0.3s;
 }
 
 .main-content.show {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* Splash Animations */

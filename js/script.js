@@ -111,8 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const slides = document.querySelectorAll('.hero-slide');
     const indicators = document.querySelectorAll('.indicator');
     const totalSlides = slides.length;
-    let currentSlide = 0;
-    let slideInterval;
     
     function showSlide(index) {
         // Remove active class from all slides and indicators
@@ -155,6 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Auto-advance slides
     function startSlideshow() {
+        stopSlideshow();
         slideInterval = setInterval(nextSlide, 8000); // Change slide every 8 seconds
     }
     
@@ -174,6 +173,29 @@ document.addEventListener('DOMContentLoaded', function() {
         if (heroSection) {
             heroSection.addEventListener('mouseenter', stopSlideshow);
             heroSection.addEventListener('mouseleave', startSlideshow);
+            
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            heroSection.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                stopSlideshow();
+            }, { passive: true });
+            
+            heroSection.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeDistance = touchEndX - touchStartX;
+                
+                if (Math.abs(swipeDistance) > 40) {
+                    if (swipeDistance < 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+                
+                startSlideshow();
+            }, { passive: true });
         }
     } else {
         console.log('No hero slides found');
@@ -465,6 +487,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function changeSlide(direction) {
     const slides = document.querySelectorAll('.hero-slide');
     const indicators = document.querySelectorAll('.indicator');
+    clearInterval(slideInterval);
     
     if (direction === 1) {
         currentSlide = (currentSlide + 1) % slides.length;
@@ -495,11 +518,14 @@ function changeSlide(direction) {
             activeProgress.style.width = '100%';
         }, 100);
     }
+    
+    slideInterval = setInterval(() => changeSlide(1), 8000);
 }
 
 function currentSlideFunc(index) {
     const slides = document.querySelectorAll('.hero-slide');
     const indicators = document.querySelectorAll('.indicator');
+    clearInterval(slideInterval);
     
     currentSlide = index - 1;
     
@@ -526,6 +552,8 @@ function currentSlideFunc(index) {
             activeProgress.style.width = '100%';
         }, 100);
     }
+    
+    slideInterval = setInterval(() => changeSlide(1), 8000);
 }
 
 // ===== GLOBAL FUNCTIONS FOR GALLERY SCROLL ===== //
