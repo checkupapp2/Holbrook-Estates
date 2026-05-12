@@ -54,7 +54,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=2026.05.11.15">
+    <link rel="stylesheet" href="css/styles.css?v=2026.05.11.24">
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="assets/IMG_4348.JPG">
@@ -124,7 +124,7 @@
             <div class="hero-slide" style="background-image: url('assets/landingpage/Full North.jpg');">
                 <div class="hero-overlay"></div>
             </div>
-            <div class="hero-slide" style="background-image: url('assets/landingpage/Spacious Lots.JPG');">
+            <div class="hero-slide" style="background-image: url('assets/Custom Homes (1).JPG');">
                 <div class="hero-overlay"></div>
             </div>
             <div class="hero-slide" style="background-image: url('assets/landingpage/Well House.png');">
@@ -145,18 +145,8 @@
                 <p class="hero-subtitle">Premier Residential Development in Flathead Valley</p>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number">35</span>
-                        <span class="stat-label">Exclusive Lots</span>
-                        <div class="stat-line"></div>
-                    </div>
-                    <div class="stat-item">
                         <span class="stat-number">1-2</span>
                         <span class="stat-label">Acre Lots</span>
-                        <div class="stat-line"></div>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">29</span>
-                        <span class="stat-label">Lots Remaining</span>
                         <div class="stat-line"></div>
                     </div>
                 </div>
@@ -200,13 +190,16 @@
     <!-- Market Pricing Banner -->
     <div class="event-banner">
         <div class="event-banner-content">
-            <img src="assets/stoneudpated.JPG" alt="Holbrook Estates updated market pricing" class="event-banner-img" onclick="openEventLightbox()">
+            <div class="event-banner-img-wrap" onclick="openEventLightbox()">
+                <img src="assets/stoneudpated 2.jpg" alt="Holbrook Estates updated market pricing" class="event-banner-img">
+            </div>
             <div class="event-banner-text">
                 <h3 class="event-banner-title">Updated Market Pricing Now Available</h3>
                 <p class="event-banner-details">Explore refreshed lot pricing in one of Flathead Valley’s premier custom home communities.</p>
                 <p class="event-banner-date"><strong>Limited homesites remain</strong> — mountain views, spacious lots, and build-to-suit opportunities.</p>
                 <div class="event-banner-actions">
-                    <a href="https://purewestrealestate.com/real-estate/community/holbrook-estates/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Available Lots</a>
+                    <a href="assets/tall-holbrook.png" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Official Plot Map</a>
+                    <a href="assets/listingshe.png" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Current Listings</a>
                 </div>
             </div>
         </div>
@@ -237,12 +230,6 @@
                              data-lightbox="flathead-valley" 
                              data-title="Flathead Valley Mountain Views" 
                              data-description="Stunning panoramic views of the Flathead Valley and surrounding mountain ranges">
-                    </div>
-                    <div class="about-image-secondary">
-                        <img src="assets/SING0024.JPG" alt="Holbrook Estates Mountain Living" class="about-img-secondary clickable-img"
-                             data-lightbox="flathead-valley"
-                             data-title="Holbrook Estates Mountain Living"
-                             data-description="Beautiful homesites surrounded by mountain views and open Montana landscapes">
                     </div>
                 </div>
             </div>
@@ -369,51 +356,6 @@
         </div>
     </section>
 
-    <!-- Plot Map Overview Section -->
-    <section id="plot-map" class="plot-map-overview">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Plot Map Overview</h2>
-                <p class="section-subtitle">Tap any image to view full size</p>
-            </div>
-            
-            <div class="plot-map-scroll">
-                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Official Plot Map" data-description="Detailed lot layout with numbers and dimensions">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="assets/tall-holbrook.png">
-                        <img src="assets/wide-holbrook.png" alt="Official Plot Map" class="plot-img">
-                    </picture>
-                    <span class="plot-label">Official Plot Map</span>
-                </div>
-                
-                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Current Listings" data-description="Current Holbrook Estates listings and availability">
-                    <img src="assets/listingshe.png" alt="Current Listings" class="plot-img">
-                    <span class="plot-label">Current Listings</span>
-                </div>
-                
-                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Development Overview" data-description="Aerial view of the development area">
-                    <img src="assets/plot2.jpg" alt="Development Overview" class="plot-img">
-                    <span class="plot-label">Development Overview</span>
-                </div>
-                
-                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Site Layout" data-description="Comprehensive site development view">
-                    <img src="assets/SING0006.JPG" alt="Site Layout" class="plot-img">
-                    <span class="plot-label">Site Layout</span>
-                </div>
-                
-                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Property Boundaries" data-description="Clear view of lot boundaries and roads">
-                    <img src="assets/SING0008.JPG" alt="Property Boundaries" class="plot-img">
-                    <span class="plot-label">Property Boundaries</span>
-                </div>
-                
-                <div class="plot-map-item" data-lightbox="plot-maps" data-title="Natural Setting" data-description="Beautiful landscape views of the development area">
-                    <img src="assets/SING0012.JPG" alt="Natural Setting" class="plot-img">
-                    <span class="plot-label">Natural Setting</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Properties Section -->
     <section id="properties" class="properties">
         <div class="container">
@@ -485,15 +427,15 @@
                 
                 <div class="property-card">
                     <div class="property-image">
-                        <img src="assets/gohti.png" alt="25 South Scarface Peak Ct - SOLD" class="property-img clickable-img" 
+                        <img src="assets/gohti.png" alt="25 South Scarface Peak Ct" class="property-img clickable-img" 
                              data-lightbox="experience-luxury" 
-                             data-title="25 South Scarface Peak Ct - SOLD" 
-                             data-description="SOLD - Spacious built by Tanninen Homes">
+                             data-title="25 South Scarface Peak Ct" 
+                             data-description="Available listing - Spacious custom home built by Tanninen Homes">
                     </div>
                     <div class="property-info">
-                        <h3>25 South Scarface Peak Ct - SOLD</h3>
-                        <p class="property-price">SOLD</p>
-                        <p class="property-description">SOLD property - Spacious built by Tanninen Homes</p>
+                        <h3>25 South Scarface Peak Ct</h3>
+                        <p class="property-price">$1,170,000</p>
+                        <p class="property-description">Available listing - Spacious custom home built by Tanninen Homes</p>
                     </div>
                 </div>
                 
@@ -800,7 +742,7 @@
     <div class="event-lightbox" id="eventLightbox" onclick="closeEventLightbox()">
         <div class="event-lightbox-content" onclick="event.stopPropagation()">
             <span class="event-lightbox-close" onclick="closeEventLightbox()">&times;</span>
-            <img src="assets/stoneudpated.JPG" alt="Holbrook Estates updated market pricing" class="event-lightbox-img">
+            <img src="assets/stoneudpated 2.jpg" alt="Holbrook Estates updated market pricing" class="event-lightbox-img">
         </div>
     </div>
 

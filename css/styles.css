@@ -283,7 +283,7 @@ p {
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     padding-top: 80px; /* Account for fixed navbar */
 }
@@ -325,29 +325,30 @@ p {
 }
 
 .hero-content {
-    text-align: center;
+    text-align: left;
     color: var(--white);
     z-index: 1;
-    max-width: 900px;
+    max-width: 580px;
     width: 100%;
     padding: var(--container-padding);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: calc(100vh - 160px);
+    margin-left: clamp(2rem, 7vw, 7rem);
 }
 
 .hero-text {
     background: rgba(0, 0, 0, 0.15);
     backdrop-filter: blur(20px);
     border-radius: var(--border-radius);
-    padding: 3rem 2.5rem 4rem;
+    padding: 1.4rem 1.6rem 2rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
     position: relative;
     overflow: hidden;
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 540px;
+    margin: 0;
 }
 
 .hero-text::before {
@@ -366,14 +367,14 @@ p {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
     opacity: 0;
     animation: fadeInUp 1s ease-out 0.5s forwards;
 }
 
 .badge-text {
     font-family: var(--font-secondary);
-    font-size: 0.75rem;
+    font-size: 0.62rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -393,7 +394,7 @@ p {
     display: flex;
     justify-content: center;
     gap: 4rem;
-    margin: 1rem 0 2rem;
+    margin: 0.25rem 0 0.85rem;
     flex-wrap: wrap;
     opacity: 0;
     animation: fadeInUp 1s ease-out 2s forwards;
@@ -403,12 +404,12 @@ p {
     text-align: center;
     color: var(--white);
     position: relative;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 .stat-number {
     display: block;
-    font-size: 2.8rem;
+    font-size: 2rem;
     font-weight: 300;
     font-family: var(--font-primary);
     color: var(--accent-color);
@@ -420,7 +421,7 @@ p {
 
 .stat-label {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.68rem;
     font-weight: 400;
     font-family: var(--font-secondary);
     text-transform: uppercase;
@@ -534,7 +535,7 @@ p {
 }
 
 .hero-title {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.65rem;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
     color: var(--white);
     line-height: 0.9;
@@ -546,7 +547,7 @@ p {
 .title-main {
     font-family: var(--font-primary);
     font-weight: 300;
-    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-size: clamp(2.45rem, 5.8vw, 4.25rem);
     letter-spacing: -0.03em;
     opacity: 0;
     animation: slideInFromLeft 1.2s ease-out 0.8s forwards;
@@ -555,7 +556,7 @@ p {
 .title-accent {
     font-family: var(--font-secondary);
     font-weight: 700;
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.35rem, 3.2vw, 2.15rem);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent-color);
@@ -566,10 +567,10 @@ p {
 
 .hero-subtitle {
     font-family: var(--font-accent);
-    font-size: 1.2rem;
+    font-size: 0.88rem;
     font-weight: 300;
     font-style: normal;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.65rem;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.05em;
@@ -583,12 +584,12 @@ p {
 
 .hero-buttons {
     display: flex;
-    gap: 2rem;
+    gap: 0.9rem;
     justify-content: center;
     flex-wrap: wrap;
     opacity: 0;
     animation: fadeInUp 1s ease-out 2.8s forwards;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     position: relative;
     z-index: 15;
 }
@@ -691,8 +692,7 @@ p {
 
 .about-images {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(240px, 0.85fr);
-    gap: 1.25rem;
+    grid-template-columns: 1fr;
     height: 520px;
     align-items: center;
 }
@@ -2711,15 +2711,16 @@ p {
         min-height: auto !important;
         height: auto;
         display: block;
+        align-items: stretch;
+        justify-content: flex-start;
         text-align: center;
-        position: relative;
-        z-index: 10;
-        max-width: 90%;
-        margin: 0 auto;
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
         padding: 2rem 1rem;
     }
     
-.hero-stats {
+    .hero-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1rem;
@@ -3805,26 +3806,40 @@ p {
     flex-wrap: nowrap;
 }
 
-.event-banner-img {
+.event-banner-img-wrap {
     width: 340px;
     height: 235px;
-    object-fit: cover;
+    overflow: hidden;
     border-radius: 18px;
     border: 3px solid var(--accent-color);
     flex-shrink: 0;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
 }
 
-.event-banner-img:hover {
-    transform: scale(1.05);
+.event-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    transform: scale(1.22);
+    transition: transform 0.3s ease;
+}
+
+.event-banner-img-wrap:hover {
     box-shadow: 0 12px 35px rgba(201, 169, 110, 0.5);
+}
+
+.event-banner-img-wrap:hover .event-banner-img {
+    transform: scale(1.28);
 }
 
 .event-banner-text {
     text-align: left;
     flex: 1;
+    max-width: 920px;
+    margin: 0;
 }
 
 .event-banner-title {
@@ -3859,6 +3874,15 @@ p {
     margin-top: 20px;
     display: flex;
     justify-content: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.event-banner-actions .btn {
+    min-width: 0;
+    padding: 0.72rem 1.15rem;
+    font-size: 0.82rem;
+    border-radius: 14px;
 }
 
 /* Event Banner Lightbox */
@@ -3916,6 +3940,11 @@ p {
     }
     
     .event-banner-img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .event-banner-img-wrap {
         width: 260px;
         height: 180px;
     }
@@ -3932,6 +3961,11 @@ p {
         justify-content: center;
     }
     
+    .event-banner-actions .btn {
+        width: auto;
+        min-width: 150px;
+    }
+    
     .event-banner-details,
     .event-banner-date {
         font-size: 1rem;
@@ -3944,6 +3978,11 @@ p {
     }
     
     .event-banner-img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .event-banner-img-wrap {
         width: 230px;
         height: 160px;
     }
