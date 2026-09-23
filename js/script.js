@@ -1022,3 +1022,50 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Property slideshows initialized'); // Debug log
     }, 5500);
 });
+
+// Accessible, independently controlled secondary residence slideshow.
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.amenities-slideshow');
+    if (!carousel) return;
+    const photos = [...carousel.querySelectorAll('.amenities-photo')];
+    const count = carousel.querySelector('.amenities-count');
+    const thumbnails = [...carousel.querySelectorAll('[data-amenities-photo]')];
+    const viewLabel = carousel.querySelector('.amenities-view-label');
+    const play = carousel.querySelector('[data-amenities-play]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let index = 0;
+    let paused = reducedMotion.matches;
+    let hovered = false;
+    let timer;
+    function show(next) {
+        index = (next + photos.length) % photos.length;
+        photos.forEach((photo, i) => { photo.hidden = i !== index; });
+        count.textContent = `${index + 1} / ${photos.length}`;
+        thumbnails.forEach((button, i) => button.setAttribute('aria-current', String(i === index)));
+        viewLabel.textContent = thumbnails[index].textContent.trim();
+    }
+    function sync() {
+        clearInterval(timer);
+        play.textContent = paused ? 'Play' : 'Pause';
+        play.setAttribute('aria-label', `${paused ? 'Play' : 'Pause'} residence slideshow`);
+        count.setAttribute('aria-live', paused ? 'polite' : 'off');
+        if (!paused && !hovered && !document.hidden) timer = setInterval(() => show(index + 1), 6000);
+    }
+    function navigate(direction) { paused = true; show(index + direction); sync(); }
+    carousel.querySelector('[data-amenities-prev]').addEventListener('click', () => navigate(-1));
+    carousel.querySelector('[data-amenities-next]').addEventListener('click', () => navigate(1));
+    thumbnails.forEach((button, i) => button.addEventListener('click', () => { paused = true; show(i); sync(); }));
+    play.addEventListener('click', () => { paused = !paused; sync(); });
+    carousel.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            navigate(event.key === 'ArrowLeft' ? -1 : 1);
+        }
+    });
+    carousel.addEventListener('mouseenter', () => { hovered = true; sync(); });
+    carousel.addEventListener('mouseleave', () => { hovered = false; sync(); });
+    carousel.addEventListener('focusin', () => { paused = true; sync(); });
+    document.addEventListener('visibilitychange', sync);
+    reducedMotion.addEventListener('change', () => { paused = reducedMotion.matches; sync(); });
+    sync();
+});

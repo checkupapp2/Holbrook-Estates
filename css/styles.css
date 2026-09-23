@@ -4095,3 +4095,49 @@ p {
         height: 160px;
     }
 }
+
+/* Secondary residence showcase: keep supplied 640px photos close to native size. */
+.features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.amenities-slideshow {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 640px) minmax(260px, 1fr);
+    width: 100%;
+    max-width: 960px;
+    justify-self: center;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--border-radius);
+    background: #fff;
+    box-shadow: var(--shadow-md);
+}
+.amenities-photos { min-width: 0; }
+.amenities-photo { display: block; width: 100%; height: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.amenities-photo[hidden] { display: none; }
+.amenities-toolbar { display: flex; flex-direction: column; justify-content: center; gap: 1.5rem; padding: 1.75rem; min-width: 0; }
+.amenities-caption > span { color: #77602e; font-size: .65rem; letter-spacing: .14em; font-weight: 600; }
+.amenities-caption p { font-family: var(--font-primary); font-size: 1.65rem; line-height: 1.2; margin: .6rem 0; color: var(--primary-color); }
+.amenities-view-label { color: var(--text-secondary); font-size: .85rem; }
+.amenities-thumbnails { display: flex; gap: .5rem; }
+.amenities-thumbnails button { flex: 1; min-width: 0; padding: 3px; border: 2px solid transparent; background: none; border-radius: 7px; cursor: pointer; }
+.amenities-thumbnails button[aria-current="true"] { border-color: #96783b; }
+.amenities-thumbnails img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 3px; }
+.amenities-thumbnails span { display: block; font: 500 .6rem/1.25 var(--font-secondary); color: var(--text-secondary); margin-top: .35rem; }
+.amenities-controls { display: flex; align-items: center; justify-content: space-between; gap: .3rem; }
+.amenities-controls button { min-width: 44px; min-height: 44px; padding: .5rem .65rem; border: 1px solid #deded6; border-radius: 50%; background: #fff; color: #283d30; font: inherit; cursor: pointer; }
+.amenities-controls [data-amenities-play] { border-radius: 6px; font-size: .8rem; }
+.amenities-controls button:hover { background: #f4f3ee; }
+.amenities-slideshow button:focus-visible, .amenities-slideshow:focus-visible { outline: 3px solid #96783b; outline-offset: 3px; }
+.amenities-count { min-width: 2.5rem; text-align: center; font-size: .8rem; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+.property-sold-badge { position: absolute; top: 1rem; left: 1rem; z-index: 5; padding: .5rem 1rem; background: #283d30; color: #fff; font-weight: 700; font-size: .8rem; letter-spacing: .12em; border-radius: 4px; pointer-events: none; }
+@media (max-width: 768px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .amenities-slideshow { grid-template-columns: 1fr; max-width: 640px; }
+    .amenities-photo { height: auto; }
+    .amenities-toolbar { padding: 1.25rem; gap: 1rem; }
+    .amenities-caption p { font-size: 1.5rem; }
+    .amenities-thumbnails img { max-height: 76px; }
+    .amenities-thumbnails span { font-size: .7rem; }
+    .amenities-controls { justify-content: center; gap: 1rem; }
+}
